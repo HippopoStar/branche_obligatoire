@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 19:50:49 by lcabanes          #+#    #+#              #
-#    Updated: 2017/11/08 12:48:31 by lcabanes         ###   ########.fr        #
+#    Updated: 2017/11/17 01:13:56 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,8 +66,15 @@ SRCS = ft_memset.c\
 		ft_putnbr.c\
 		ft_putchar_fd.c\
 		ft_putstr_fd.c\
-		ft_putndl_fd.c\
-		ft_putnbr_fd.c
+		ft_putendl_fd.c\
+		ft_putnbr_fd.c\
+		\
+		ft_lstnew.c\
+		ft_lstdelone.c\
+		ft_lstdel.c\
+		ft_lstadd.c\
+		ft_lstiter.c\
+		ft_lstmap.c
 
 OBJS = ft_memset.o\
 		ft_bzero.o\
@@ -120,8 +127,15 @@ OBJS = ft_memset.o\
 		ft_putnbr.o\
 		ft_putchar_fd.o\
 		ft_putstr_fd.o\
-		ft_putndl_fd.o\
-		ft_putnbr_fd.o
+		ft_putendl_fd.o\
+		ft_putnbr_fd.o\
+		\
+		ft_lstnew.o\
+		ft_lstdelone.o\
+		ft_lstdel.o\
+		ft_lstadd.o\
+		ft_lstiter.o\
+		ft_lstmap.o
 
 all: $(NAME)
 

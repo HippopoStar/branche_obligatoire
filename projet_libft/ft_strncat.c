@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 18:00:57 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/17 01:06:14 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/17 03:27:27 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/17 06:07:08 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	void	*emplacement;
+	size_t	i;
+	size_t	length_s1;
 
-	if (!(emplacement = (void *)malloc(size * sizeof(unsigned char))))
-		return (NULL);
-	ft_bzero(emplacement, size);
-	return (emplacement);
+	length_s1 = ft_strlen(s1);
+	i = 0;
+	while (*(s2 + i) != '\0' && i < n)
+	{
+		*(s1 + length_s1 + i) = *(s2 + i);
+		i++;
+	}
+	*(s1 + length_s1 + i) = '\0';
+	return (s1);
 }

@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 18:00:57 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/17 01:06:14 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/17 05:42:39 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/17 05:45:25 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+int		ft_isascii(int c)
 {
-	void	*emplacement;
-
-	if (!(emplacement = (void *)malloc(size * sizeof(unsigned char))))
-		return (NULL);
-	ft_bzero(emplacement, size);
-	return (emplacement);
+	return ((0 <= c && c <= 127) ? 1 : 0);
 }

@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 18:00:57 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/17 01:06:14 by lcabanes         ###   ########.fr       */
+/*   Created: 2017/11/17 02:42:33 by lcabanes          #+#    #+#             */
+/*   Updated: 2017/11/17 02:48:01 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	void	*emplacement;
+	t_list	*next;
 
-	if (!(emplacement = (void *)malloc(size * sizeof(unsigned char))))
-		return (NULL);
-	ft_bzero(emplacement, size);
-	return (emplacement);
+	next = lst->next;
+	while (next != NULL)
+	{
+		f(next);
+		next = next->next;
+	}
 }

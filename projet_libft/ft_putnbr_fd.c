@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 17:49:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/10 17:55:55 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/25 20:57:31 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void		ft_putnbr_fd(int n, int fd)
 	if (n == 0)
 	{
 		ft_putchar_fd('0', fd);
+	}
+	else if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
 	}
 	else if (n < 0)
 	{

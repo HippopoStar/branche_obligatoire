@@ -6,32 +6,36 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 02:48:17 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/17 03:15:41 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/26 01:42:43 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*current;
 	t_list	*new_list;
-	t_list	*new_link_current;
-	t_list	*new_link_next;
+	t_list	*current;
+	t_list	*next;
 
-	current = lst;
-	if (!(new_list = (t_list *)malloc(sizeof(t_list))))
+	if (lst == NULL)
 		return (NULL);
-	new_link_current = new_list;
-	while (current != NULL)
+	else
 	{
-		new_link_current = f(current);
-		if (!(new_link_next = (t_list *)malloc(sizeof(t_list))))
+		if (!(new_list = (t_list *)malloc(sizeof(t_list))))
 			return (NULL);
-		new_link_current->next = new_link_next;
-		new_link_current = new_link_next;
-		current = current->next;
+		current = new_list;
+		while (lst->next != NULL)
+		{
+			*current = *(f(lst));
+			if (!(next = (t_list *)malloc(sizeof(t_list))))
+				return (NULL);
+			current->next = next;
+			current = next;
+			lst = lst->next;
+		}
+		*current = *f(lst);
+		current->next = NULL;
 	}
-	new_link_current->next = NULL;
 	return (new_list);
 }

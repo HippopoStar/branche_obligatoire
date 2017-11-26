@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 05:06:19 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/17 06:06:08 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/25 23:39:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ char	*ft_strstr(const char *haystack, const char *needle)
 		}
 		i++;
 	}
-	return (NULL);
+	return ((*(needle + 0) == '\0') ? (char *)(haystack + 0) : NULL);
 }

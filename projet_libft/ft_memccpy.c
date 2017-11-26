@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 18:41:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/15 18:49:11 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/17 09:43:38 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 		*(cast_dst + i) = *(cast_src + i);
 		i++;
 	}
-	if (i < n)
+	if (*(cast_src + i) == byte)
 	{
-		return ((dst + i));
+		*(cast_dst + i) = byte;
+		return ((dst + i + 1));
 	}
 	else
 	{

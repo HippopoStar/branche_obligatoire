@@ -6,13 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/17 05:56:34 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/17 05:58:47 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/17 07:04:49 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		tolower(int c)
+int		ft_tolower(int c)
 {
 	return (('A' <= c && c <= 'Z') ? (c + 'a' - 'A') : c);
 }

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 18:41:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/17 09:43:38 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/26 02:27:29 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	byte = (unsigned char)c;
 	cast_dst = (unsigned char *)dst;
 	cast_src = (unsigned char *)src;
-	i = 0;
-	while (i < n && *(cast_src + i) != byte)
+	if (n > 0)
 	{
-		*(cast_dst + i) = *(cast_src + i);
-		i++;
+		i = 0;
+		while (i < n && *(cast_src + i) != byte)
+		{
+			*(cast_dst + i) = *(cast_src + i);
+			i++;
+		}
+		if (i < n)
+		{
+			*(cast_dst + i) = byte;
+			return ((dst + i + 1));
+		}
 	}
-	if (*(cast_src + i) == byte)
-	{
-		*(cast_dst + i) = byte;
-		return ((dst + i + 1));
-	}
-	else
-	{
-		return (NULL);
-	}
+	return (NULL);
 }

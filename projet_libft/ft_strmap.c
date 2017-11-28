@@ -6,13 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 16:35:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/10 16:50:33 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/28 01:23:20 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+static char	*aux_ft_strmap(char const *s, char (*f)(char))
 {
 	size_t	i;
 	size_t	length;
@@ -29,4 +29,9 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	}
 	*(map + length) = '\0';
 	return (map);
+}
+
+char		*ft_strmap(char const *s, char (*f)(char))
+{
+	return ((s != NULL) ? aux_ft_strmap(s, f) : NULL);
 }

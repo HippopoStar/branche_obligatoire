@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:07:40 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/09 15:37:16 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/28 01:43:42 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static size_t	cherche_arrivee(char const *s, size_t index)
 	return (index);
 }
 
-char			*ft_strtrim(char const *s)
+static char		*aux_ft_strtrim(char const *s)
 {
 	size_t	i;
 	size_t	depart;
@@ -57,4 +57,9 @@ char			*ft_strtrim(char const *s)
 	}
 	*(trim + i) = '\0';
 	return (trim);
+}
+
+char			*ft_strtrim(char const *s)
+{
+	return ((s != NULL) ? aux_ft_strtrim(s) : NULL);
 }

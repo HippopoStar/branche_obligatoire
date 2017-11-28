@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:37:45 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/10 16:13:51 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/28 01:41:54 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static size_t	fill_word(char **split, const char *s, char c)
 	return (word_length);
 }
 
-char			**ft_strsplit(char const *s, char c)
+static char		**aux_ft_strsplit(char const *s, char c)
 {
 	char	**split;
 	size_t	word_place;
@@ -88,4 +88,9 @@ char			**ft_strsplit(char const *s, char c)
 	}
 	*(split + word_place) = NULL;
 	return (split);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	return ((s != NULL) ? aux_ft_strsplit(s, c) : NULL);
 }

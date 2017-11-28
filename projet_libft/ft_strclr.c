@@ -6,13 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 16:20:54 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/10 16:22:33 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/28 01:17:40 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strclr(char *s)
+static void	aux_ft_strclr(char *s)
 {
 	size_t	i;
 
@@ -21,5 +21,13 @@ void	ft_strclr(char *s)
 	{
 		*(s + i) = '\0';
 		i++;
+	}
+}
+
+void		ft_strclr(char *s)
+{
+	if (s != NULL)
+	{
+		aux_ft_strclr(s);
 	}
 }

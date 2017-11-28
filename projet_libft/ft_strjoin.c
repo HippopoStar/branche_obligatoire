@@ -6,13 +6,13 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 14:34:09 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/09 14:43:33 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/28 01:38:45 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static char	*aux_ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
 	size_t	length_s1;
@@ -37,4 +37,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	*(concat + length_s1 + length_s2) = '\0';
 	return (concat);
+}
+
+char		*ft_strjoin(char const *s1, char const *s2)
+{
+	return ((s1 != NULL && s2 != NULL) ? aux_ft_strjoin(s1, s2) : NULL);
 }

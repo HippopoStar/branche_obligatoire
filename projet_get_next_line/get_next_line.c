@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/29 06:36:23 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/29 07:05:13 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static int	aux_3_get_next_line(const int fd, char **line, t_gnl *maillon)
 	ssize_t			previous_length;
 	ssize_t			to_add;
 	ssize_t			i;
+	int				retour;
 
 	previous_length = 0;
 	while (*((*line) + previous_length) != '\0')
@@ -65,7 +66,7 @@ static int	aux_3_get_next_line(const int fd, char **line, t_gnl *maillon)
 	*line = temp;
 	if (maillon->backspace_place == maillon->bytes_readed)
 	{
-		return (aux_2_get_next_line(fd, line, maillon));
+		return ((retour = aux_2_get_next_line(fd, line, maillon)) == 0 ? 1 : retour);
 	}
 	else
 	{
@@ -147,6 +148,10 @@ int			get_next_line(const int fd, char **line)
 {
 //	ft_putstr("get_next_line\n");
 
+	if (line == NULL)
+	{
+		return (-1);
+	}
 	if (!((*line) = (char *)malloc(sizeof(char))))
 		return (-1);
 	**line = '\0';

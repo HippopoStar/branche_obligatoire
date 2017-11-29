@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/28 08:17:43 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/11/29 06:36:23 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static int	aux_3_get_next_line(const int fd, char **line, t_gnl *maillon)
 //	ft_putstr("\n");
 
 	char			*temp;
-	size_t			previous_length;
-	size_t			to_add;
-	size_t			i;
+	ssize_t			previous_length;
+	ssize_t			to_add;
+	ssize_t			i;
 
 	previous_length = 0;
 	while (*((*line) + previous_length) != '\0')
@@ -83,7 +83,8 @@ static int	aux_2_get_next_line(const int fd, char **line, t_gnl *maillon)
 		if (!(maillon->BUFFER = (char *)malloc(BUFF_SIZE * sizeof(char))))
 			return (-1);
 		maillon->backspace_place = 0;
-		maillon->bytes_readed = read(fd, maillon->BUFFER, BUFF_SIZE);
+		if ((maillon->bytes_readed = read(fd, maillon->BUFFER, BUFF_SIZE)) == -1)
+			return (-1);
 		return (aux_2_get_next_line(fd, line, maillon));
 	}
 	else if (maillon->bytes_readed == 0)
@@ -92,7 +93,8 @@ static int	aux_2_get_next_line(const int fd, char **line, t_gnl *maillon)
 	}
 	else if (maillon->backspace_place == maillon->bytes_readed)
 	{
-		maillon->bytes_readed = read(fd, maillon->BUFFER, BUFF_SIZE);
+		if ((maillon->bytes_readed = read(fd, maillon->BUFFER, BUFF_SIZE)) == -1)
+			return (-1);
 		maillon->backspace_place = 0;
 		return (aux_2_get_next_line(fd, line, maillon));
 	}
@@ -114,6 +116,7 @@ static int	aux_1_get_next_line(const int fd, char **line, t_gnl *maillon)
 				return (-1);
 			(maillon->next)->fd = fd;
 			(maillon->next)->BUFFER = NULL;
+			(maillon->next)->next = NULL;
 		}
 		return (aux_1_get_next_line(fd, line, maillon->next));
 	}

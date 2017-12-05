@@ -16,10 +16,14 @@ CFLAGS	+=		-I./
 NAME = fillit
 
 SRCS = main_fillit.c\
+	   top_left.c\
+	   epur.c\
 	   show_pieces.c\
 	   ft_putstr.c
 
 OBJS = main_fillit.o\
+	   top_left.o\
+	   epur.o\
 	   show_pieces.o\
 	   ft_putstr.o
 

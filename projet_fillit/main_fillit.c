@@ -113,6 +113,12 @@ void	fillit(int fd)
 	fill_pieces(fd, &nb_of_pieces, pieces);
 
 	show_pieces(pieces);
+	top_left_corner_pieces(pieces);
+
+	show_pieces(pieces);
+	epur_pieces(pieces);
+
+	show_pieces(pieces);
 	ft_putstr("Fin de \"fillit\"\n");
 }
 

@@ -25,6 +25,13 @@ void	show_pieces(char ***pieces);
 void	show_one_piece(char **one_piece);
 void	show_line(char *line);
 
+void	epur_pieces(char ***pieces);
+void	epur_one_piece(char **one_piece);
+
+void	top_left_corner_pieces(char ***pieces);
+void	top_left_corner_one_piece(char **one_piece);
+void	decal(char **one_piece, size_t top, size_t left);
+
 void	fillit(int fd);
 void	fill_pieces(int fd, size_t *piece_nb, char ***pieces);
 int		fill_one_piece(int fd, char **one_piece, size_t piece_nb);

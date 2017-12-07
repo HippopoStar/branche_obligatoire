@@ -28,7 +28,11 @@ void	show_line(char *line);
 char	**copy_grid(char **grid, size_t dim);
 void	liberate_grid(char ***grid);
 char	**initialise_grid(size_t dim);
-size_t	calculate_dim(char **grid);
+size_t	current_dim(char **grid);
+size_t	next_dim(char **grid);
+
+char	**solve_fillit(char ***pieces, size_t nb_of_pieces);
+char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces);
 
 void	place_one_piece(char **grid, size_t v_pos, size_t h_pos, char **one_piece);
 int		is_available(char **grid, size_t v_pos, size_t h_pos, char **one_piece);

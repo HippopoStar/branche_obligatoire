@@ -104,6 +104,7 @@ void	fillit(int fd)
 {
 	ft_putstr("Debut de \"fillit\"\n");
 
+	char	**retour;
 	char	***pieces;
 	size_t	nb_of_pieces;
 
@@ -113,19 +114,23 @@ void	fillit(int fd)
 	fill_pieces(fd, &nb_of_pieces, pieces);
 
 	show_pieces(pieces);
-	top_left_corner_pieces(pieces);
 
+	top_left_corner_pieces(pieces);
 	show_pieces(pieces);
+
 	if (!(conform_pieces(pieces)))
 	{
 		ft_putstr("Pieces non conformes\n");
 		exit (-1);
 	}
-
 	show_pieces(pieces);
+
 	epur_pieces(pieces);
-
 	show_pieces(pieces);
+
+	retour = (solve_fillit(pieces, nb_of_pieces));
+	ft_putstr("\nTADAAAAM !\n\n");
+	show_one_piece(retour);
 	ft_putstr("Fin de \"fillit\"\n");
 }
 

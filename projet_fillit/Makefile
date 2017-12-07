@@ -19,6 +19,8 @@ SRCS = main_fillit.c\
 	   top_left.c\
 	   conform_pieces.c\
 	   epur.c\
+	   place_one_piece.c\
+	   manipulate_grid.c\
 	   show_pieces.c\
 	   ft_putstr.c
 
@@ -26,6 +28,8 @@ OBJS = main_fillit.o\
 	   top_left.o\
 	   conform_pieces.o\
 	   epur.o\
+	   place_one_piece.o\
+	   manipulate_grid.o\
 	   show_pieces.o\
 	   ft_putstr.o
 

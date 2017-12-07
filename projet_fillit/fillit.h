@@ -25,6 +25,14 @@ void	show_pieces(char ***pieces);
 void	show_one_piece(char **one_piece);
 void	show_line(char *line);
 
+char	**copy_grid(char **grid, size_t dim);
+void	liberate_grid(char ***grid);
+char	**initialise_grid(size_t dim);
+size_t	calculate_dim(char **grid);
+
+void	place_one_piece(char **grid, size_t v_pos, size_t h_pos, char **one_piece);
+int		is_available(char **grid, size_t v_pos, size_t h_pos, char **one_piece);
+
 void	epur_pieces(char ***pieces);
 void	epur_one_piece(char **one_piece);
 

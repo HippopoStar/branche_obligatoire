@@ -116,6 +116,13 @@ void	fillit(int fd)
 	top_left_corner_pieces(pieces);
 
 	show_pieces(pieces);
+	if (!(conform_pieces(pieces)))
+	{
+		ft_putstr("Pieces non conformes\n");
+		exit (-1);
+	}
+
+	show_pieces(pieces);
 	epur_pieces(pieces);
 
 	show_pieces(pieces);

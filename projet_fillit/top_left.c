@@ -3,7 +3,7 @@
 
 void	decal(char **one_piece, size_t top, size_t left)
 {
-	ft_putstr("Debut de \"decal\"\n");
+//	ft_putstr("Debut de \"decal\"\n");
 
 	size_t	i;
 	size_t	j;
@@ -26,12 +26,12 @@ void	decal(char **one_piece, size_t top, size_t left)
 		i++;
 	}
 
-	ft_putstr("Fin de \"decal\"\n");
+//	ft_putstr("Fin de \"decal\"\n");
 }
 
 void	top_left_corner_one_piece(char **one_piece)
 {
-	ft_putstr("Debut de \"top_left_corner_one_piece\"\n");
+//	ft_putstr("Debut de \"top_left_corner_one_piece\"\n");
 
 	size_t	i;
 	size_t	j;
@@ -66,7 +66,7 @@ void	top_left_corner_one_piece(char **one_piece)
 		decal(one_piece, top, left);
 	}
 
-	ft_putstr("Fin de \"top_left_corner_one_piece\"\n");
+//	ft_putstr("Fin de \"top_left_corner_one_piece\"\n");
 }
 
 void	top_left_corner_pieces(char ***pieces)

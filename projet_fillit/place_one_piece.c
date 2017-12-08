@@ -1,7 +1,29 @@
 
 #include "fillit.h"
 
-int	is_available(char **grid, size_t v_pos, size_t h_pos, char **one_piece)
+void	unplace_one_piece(char **grid, size_t v_pos, size_t h_pos, char **one_piece)
+{
+	size_t	i;
+	size_t	j;
+	char	c;
+
+		i = 0;
+		while (*(one_piece + i) != NULL)
+		{
+			j = 0;
+			while ((c = *(*(one_piece + i) + j)) != '\0')
+			{
+				if (c != '.')
+				{
+					*(*(grid + (v_pos + i)) + (h_pos + j)) = '.';
+				}
+				j++;
+			}
+			i++;
+		}
+}
+
+int		is_available(char **grid, size_t v_pos, size_t h_pos, char **one_piece)
 {
 	size_t	i;
 	size_t	j;

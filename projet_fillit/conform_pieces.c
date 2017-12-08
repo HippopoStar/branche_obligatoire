@@ -3,7 +3,7 @@
 
 int		match_that_piece(int fd, char **one_piece, char *read_buf)
 {
-	ft_putstr("Appel de \"match_that_piece\"\n");
+//	ft_putstr("Appel de \"match_that_piece\"\n");
 
 	int		total_readed;
 	char	c;
@@ -41,7 +41,7 @@ int		match_that_piece(int fd, char **one_piece, char *read_buf)
 
 int		match_a_piece(int fd, char **one_piece, int read_value, char *read_buf)
 {
-	ft_putstr("Appel de \"match_a_piece\"\n");
+//	ft_putstr("Appel de \"match_a_piece\"\n");
 
 	if (read_value != 1)
 	{
@@ -62,7 +62,7 @@ int		match_a_piece(int fd, char **one_piece, int read_value, char *read_buf)
 
 int		conform_one_piece(char **one_piece, char *read_buf)
 {
-	ft_putstr("Appel de \"conform_one_piece\"\n");
+//	ft_putstr("Appel de \"conform_one_piece\"\n");
 
 	int		fd;
 
@@ -73,7 +73,7 @@ int		conform_one_piece(char **one_piece, char *read_buf)
 
 int		conform_piece_i(char ***piece_i, char *read_buf)
 {
-	ft_putstr("Appel de \"conform_piece_i\"\n");
+//	ft_putstr("Appel de \"conform_piece_i\"\n");
 
 	if (*piece_i == NULL)
 	{
@@ -88,6 +88,8 @@ int		conform_piece_i(char ***piece_i, char *read_buf)
 
 int		conform_pieces(char ***pieces)
 {
+	ft_putstr("Appel de \"conform_pieces\"\n");
+
 	char	*read_buf;
 
 	if (!(read_buf = (char *)malloc((20 + 1) * sizeof(char))))

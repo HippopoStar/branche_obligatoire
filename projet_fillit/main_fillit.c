@@ -14,7 +14,7 @@
 
 void	fill_line(int fd, char *line, size_t piece_nb)
 {
-	ft_putstr("Debut de \"fill_line\"\n");
+//	ft_putstr("Debut de \"fill_line\"\n");
 
 	size_t	column_nb;
 	char	c;
@@ -42,12 +42,12 @@ void	fill_line(int fd, char *line, size_t piece_nb)
 	}
 	*(line + 4) = '\0';
 
-	ft_putstr("Fin de \"fill_line\"\n");
+//	ft_putstr("Fin de \"fill_line\"\n");
 }
 
 int		fill_one_piece(int fd, char **one_piece, size_t piece_nb)
 {
-	ft_putstr("Debut de \"fill_one_piece\"\n");
+//	ft_putstr("Debut de \"fill_one_piece\"\n");
 
 	size_t	line_nb;
 	char	c;
@@ -73,7 +73,7 @@ int		fill_one_piece(int fd, char **one_piece, size_t piece_nb)
 	*(one_piece + 4) = NULL;
 	return (1);
 
-	ft_putstr("Fin de \"fill_one_piece\"\n");
+//	ft_putstr("Fin de \"fill_one_piece\"\n");
 }
 
 void	fill_pieces(int fd, size_t *piece_nb, char ***pieces)
@@ -123,7 +123,7 @@ void	fillit(int fd)
 		ft_putstr("Pieces non conformes\n");
 		exit (-1);
 	}
-	show_pieces(pieces);
+	write(1, "\n", 1);
 
 	epur_pieces(pieces);
 	show_pieces(pieces);
@@ -131,6 +131,8 @@ void	fillit(int fd)
 	retour = (solve_fillit(pieces, nb_of_pieces));
 	ft_putstr("\nTADAAAAM !\n\n");
 	show_one_piece(retour);
+
+	write(1, "\n", 1);
 	ft_putstr("Fin de \"fillit\"\n");
 }
 

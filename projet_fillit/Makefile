@@ -21,6 +21,7 @@ SRCS = main_fillit.c\
 	   epur.c\
 	   place_one_piece.c\
 	   solve_fillit.c\
+	   aux_solve_fillit.c\
 	   manipulate_grid.c\
 	   show_pieces.c\
 	   ft_putstr.c
@@ -31,6 +32,7 @@ OBJS = main_fillit.o\
 	   epur.o\
 	   place_one_piece.o\
 	   solve_fillit.o\
+	   aux_solve_fillit.o\
 	   manipulate_grid.o\
 	   show_pieces.o\
 	   ft_putstr.o

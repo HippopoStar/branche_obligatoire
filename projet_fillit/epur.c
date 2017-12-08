@@ -3,7 +3,7 @@
 
 void	epur_one_piece(char **one_piece)
 {
-	ft_putstr("Debut de \"epur_one_piece\"\n");
+//	ft_putstr("Debut de \"epur_one_piece\"\n");
 
 	ssize_t	i;
 	ssize_t	j;
@@ -37,7 +37,7 @@ void	epur_one_piece(char **one_piece)
 		i--;
 	}
 
-	ft_putstr("Fin de \"epur_one_piece\"\n");
+//	ft_putstr("Fin de \"epur_one_piece\"\n");
 }
 
 void	epur_pieces(char ***pieces)

@@ -33,6 +33,7 @@ size_t	next_dim(char **grid);
 
 char	**solve_fillit(char ***pieces, size_t nb_of_pieces);
 char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces);
+int		is_improvable(char **current_solution, size_t dim);
 
 void	place_one_piece(char **grid, size_t v_pos, size_t h_pos, char **one_piece);
 int		is_available(char **grid, size_t v_pos, size_t h_pos, char **one_piece);

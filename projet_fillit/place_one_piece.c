@@ -45,7 +45,10 @@ void	place_one_piece(char **grid, size_t v_pos, size_t h_pos, char **one_piece)
 		j = 0;
 		while ((c = *(*(one_piece + i) + j)) != '\0')
 		{
-			*(*(grid + (v_pos + i)) + (h_pos + j)) = c;
+			if (c != '.')
+			{
+				*(*(grid + (v_pos + i)) + (h_pos + j)) = c;
+			}
 			j++;
 		}
 		i++;

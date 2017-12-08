@@ -109,7 +109,7 @@ void	fillit(int fd)
 	size_t	nb_of_pieces;
 
 	nb_of_pieces = 0;
-	if (!(pieces = (char ***)malloc(26 * sizeof(char **))))
+	if (!(pieces = (char ***)malloc((26 + 1) * sizeof(char **))))
 		exit (-1);
 	fill_pieces(fd, &nb_of_pieces, pieces);
 

@@ -61,7 +61,10 @@ void	top_left_corner_one_piece(char **one_piece)
 		}
 		i++;
 	}
-	decal(one_piece, top, left);
+	if (top || left)
+	{
+		decal(one_piece, top, left);
+	}
 
 	ft_putstr("Fin de \"top_left_corner_one_piece\"\n");
 }

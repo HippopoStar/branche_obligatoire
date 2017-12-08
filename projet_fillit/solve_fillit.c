@@ -1,6 +1,30 @@
 
 #include "fillit.h"
 
+int		is_improvable(char **current_solution, size_t dim)
+{
+	size_t	dot_count;
+	size_t	i;
+	size_t	j;
+
+	dot_count = 0;
+	i = 0;
+	while (i < dim)
+	{
+		j = 0;
+		while (j < dim)
+		{
+			if (*(*(current_solution + i) + j) == '.')
+			{
+				dot_count++;
+			}
+			j++;
+		}
+		i++;
+	}
+	return ((dot_count > (2 * dim) - 1) ? 1 : 0);
+}
+
 char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces)
 {
 //	ft_putstr("Appel de \"solve_current\"\n");
@@ -61,6 +85,9 @@ char	**solve_fillit(char ***pieces, size_t nb_of_pieces)
 
 		show_one_piece(definitive_solution);
 		ft_putstr("\n");
+
+		if (!(is_improvable(definitive_solution, dim)))
+			break;
 	}
 	return (definitive_solution);
 }

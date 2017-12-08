@@ -100,7 +100,7 @@ char	**solve_fillit(char ***pieces, size_t nb_of_pieces)
 	char	**retour;
 
 	min_dim = calculate_min_dim(nb_of_pieces);
-	dim = (nb_of_pieces * 4);
+	dim = ((nb_of_pieces + 1) * 4);
 	if (!(definitive_solution = (char **)malloc(sizeof(char *))))
 		exit (-1);
 	*definitive_solution = NULL;

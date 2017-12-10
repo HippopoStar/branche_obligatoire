@@ -21,6 +21,10 @@
 size_t	ft_strlen(char *str);
 void	ft_putstr(char *str);
 
+void	print_grid(char **grid);
+void	write_color(char c, char *color);
+char	*initialise_color(void);
+
 void	show_pieces(char ***pieces);
 void	show_one_piece(char **one_piece);
 void	show_line(char *line);

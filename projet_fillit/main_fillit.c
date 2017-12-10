@@ -133,7 +133,7 @@ void	fillit(int fd)
 
 //	CREER UNE FONCTION A PART ENTIERE QUI AFFICHE LE RESULTAT
 //	EN ASSOCIANT UNE COULEUR DIFFERENTE A CHAQUE LETTRE
-	show_one_piece(retour);
+	print_grid(retour);
 
 	write(1, "\n", 1);
 	ft_putstr("Fin de \"fillit\"\n");

@@ -1,17 +1,13 @@
 
 #include "fillit.h"
 
-char	**question_mark(void)
-{
-	char	**question_mark;
-
-	if (!(question_mark = (char **)malloc(sizeof(char *))))
-		exit (-1);
-	if (!(*question_mark = (char *)malloc(sizeof(char))))
-		exit (-1);
-	**question_mark = '?';
-	return (question_mark);
-}
+/*
+** max_dim = 4 * (racine_carree de nb_of_pieces)
+** max_dim = 4 * (racine carree de (nb_of_characters / 4))
+** max_dim = 4 * ((racine_carree de nb_of_caracters) / 2)
+** max_dim = 2 * (racine_carree de nb_of_characters)
+** max_dim = 2 * min_dim
+*/
 
 size_t	calculate_min_dim(size_t nb_of_pieces)
 {
@@ -28,30 +24,6 @@ size_t	calculate_min_dim(size_t nb_of_pieces)
 	return ((i_square == nb_of_characters) ? i : (i + 1));
 }
 
-int		is_improvable(char **current_solution, size_t dim)
-{
-	size_t	dot_count;
-	size_t	i;
-	size_t	j;
-
-	dot_count = 0;
-	i = 0;
-	while (i < dim)
-	{
-		j = 0;
-		while (j < dim)
-		{
-			if (*(*(current_solution + i) + j) == '.')
-			{
-				dot_count++;
-			}
-			j++;
-		}
-		i++;
-	}
-	return ((dot_count > (2 * (dim - 1)) - 1) ? 1 : 0);
-}
-
 char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces)
 {
 //	ft_putstr("Appel de \"solve_current\"\n");
@@ -60,12 +32,14 @@ char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces)
 
 	if (*(pieces) == NULL)
 	{
-		ft_putstr("YEAH !\n\n");
+		show_one_piece(grid);
+		write(1, "\n", 1);
+		ft_putstr("YEAH ! =D\n\n");
 		return (grid);
 	}
 	else if (*(grid + v_pos) == NULL)
 	{
-		ft_putstr("NOPE\n");
+		ft_putstr("NOPE =|\n\n");
 		return (NULL);
 	}
 	else if (*(*(grid + v_pos) + h_pos) == '\0')
@@ -100,11 +74,15 @@ char	**solve_fillit(char ***pieces, size_t nb_of_pieces)
 	char	**retour;
 
 	min_dim = calculate_min_dim(nb_of_pieces);
-	dim = ((nb_of_pieces + 1) * 4);
+	dim = min_dim * 2;
 	if (!(definitive_solution = (char **)malloc(sizeof(char *))))
 		exit (-1);
 	*definitive_solution = NULL;
 	current_grid = initialise_grid(dim);
+
+	show_one_piece(current_grid);
+	write(1, "\n", 1);
+
 	while (dim > min_dim && (retour = solve_current(current_grid, 0, 0, pieces)) != NULL)
 	{
 		liberate_grid(&definitive_solution);
@@ -114,11 +92,11 @@ char	**solve_fillit(char ***pieces, size_t nb_of_pieces)
 		current_grid = initialise_grid(dim - 1);
 
 		show_one_piece(definitive_solution);
-		ft_putstr("\n");
-		ft_putstr("WANT SOME MORE ?\n");
+		write(1, "\n", 1);
 
-//		if (!(is_improvable(definitive_solution, dim)))
-//			break;
+		show_one_piece(current_grid);
+		write(1, "\n", 1);
+
 	}
 	return (definitive_solution);
 }

@@ -29,18 +29,6 @@ size_t	next_dim(char **grid)
 	return ((dim_v > dim_h) ? (dim_v + 1) : (dim_h + 1));
 }
 
-size_t	current_dim(char **grid)
-{
-	size_t	i;
-
-	i = 0;
-	while (*(grid + i) != NULL)
-	{
-		i++;
-	}
-	return (i);
-}
-
 char	**initialise_grid(size_t dim)
 {
 	char	**initial_grid;

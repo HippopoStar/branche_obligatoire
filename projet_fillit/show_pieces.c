@@ -32,7 +32,7 @@ void	show_one_piece(char **one_piece)
 	while (*(one_piece + line_nb) != NULL)
 	{
 		show_line(*(one_piece + line_nb));
-		ft_putstr("\n");
+		write(1, "\n", 1);
 		line_nb++;
 	}
 }
@@ -45,7 +45,7 @@ void	show_pieces(char ***pieces)
 	while (*(pieces + piece_nb) != NULL)
 	{
 		show_one_piece(*(pieces + piece_nb));
-		ft_putstr("\n");
+		write(1, "\n", 1);
 		piece_nb++;
 	}
 }

@@ -28,7 +28,6 @@ void	show_line(char *line);
 char	**copy_grid(char **grid, size_t dim);
 void	liberate_grid(char ***grid);
 char	**initialise_grid(size_t dim);
-size_t	current_dim(char **grid);
 size_t	next_dim(char **grid);
 
 char	**aux0_solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces);
@@ -36,9 +35,7 @@ char	**aux1_solve_current(char **grid, size_t v_pos, size_t h_pos, char ***piece
 
 char	**solve_fillit(char ***pieces, size_t nb_of_pieces);
 char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces);
-int		is_improvable(char **current_solution, size_t dim);
 size_t	calculate_min_dim(size_t nb_of_pieces);
-char	**question_mark(void);
 
 void	place_one_piece(char **grid, size_t v_pos, size_t h_pos, char **one_piece);
 int		is_available(char **grid, size_t v_pos, size_t h_pos, char **one_piece);

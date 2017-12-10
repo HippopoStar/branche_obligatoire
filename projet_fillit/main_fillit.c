@@ -129,7 +129,10 @@ void	fillit(int fd)
 	show_pieces(pieces);
 
 	retour = (solve_fillit(pieces, nb_of_pieces));
-	ft_putstr("\nTADAAAAM !\n\n");
+	ft_putstr("\nLE RESULTAT EST :\n\n");
+
+//	CREER UNE FONCTION A PART ENTIERE QUI AFFICHE LE RESULTAT
+//	EN ASSOCIANT UNE COULEUR DIFFERENTE A CHAQUE LETTRE
 	show_one_piece(retour);
 
 	write(1, "\n", 1);

@@ -39,6 +39,7 @@ char	**aux1_solve_current(char **grid, size_t v_pos, size_t h_pos, char ***piece
 
 char	**solve_fillit(char ***pieces, size_t nb_of_pieces);
 char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces);
+size_t	calculate_max_dim(size_t nb_of_pieces);
 size_t	calculate_min_dim(size_t nb_of_pieces);
 
 void	place_one_piece(char **grid, size_t v_pos, size_t h_pos, char **one_piece);

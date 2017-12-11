@@ -24,6 +24,8 @@ void	write_color(char c, char *color)
 	}
 	else
 	{
+		*(color + 3) = '1';
+		write(1, color, 6);
 		*(color + 2) = '3';
 		*(color + 3) = '1' + ((c - 'A') % 6);
 		write(1, color, 6);

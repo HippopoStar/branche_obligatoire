@@ -21,7 +21,20 @@ size_t	calculate_min_dim(size_t nb_of_pieces)
 	{
 		i++;
 	}
-	return ((i_square == nb_of_characters) ? i : (i + 1));
+	return (i);
+}
+
+size_t	calculate_max_dim(size_t nb_of_pieces)
+{
+	size_t	i;
+	size_t	i_square;
+
+	i = 0;
+	while ((i_square = i *i) < (nb_of_pieces + 1))
+	{
+		i++;
+	}
+	return (4 * i);
 }
 
 char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces)
@@ -32,14 +45,14 @@ char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces)
 
 	if (*(pieces) == NULL)
 	{
-		show_one_piece(grid);
-		write(1, "\n", 1);
-		ft_putstr("YEAH ! =D\n\n");
+//		show_one_piece(grid);
+//		write(1, "\n", 1);
+//		ft_putstr("YEAH ! =D\n\n");
 		return (grid);
 	}
 	else if (*(grid + v_pos) == NULL)
 	{
-		ft_putstr("NOPE =|\n\n");
+//		ft_putstr("NOPE =|\n\n");
 		return (NULL);
 	}
 	else if (*(*(grid + v_pos) + h_pos) == '\0')
@@ -50,11 +63,9 @@ char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces)
 	{
 		if (is_available(grid, v_pos, h_pos, *pieces))
 		{
-			if ((retour = aux0_solve_current(grid, v_pos, h_pos, pieces)) != NULL)
-			{
-				return (retour);
-			}
-			return (aux1_solve_current(grid, v_pos, h_pos, pieces));
+			return (((retour = aux0_solve_current(grid, v_pos, h_pos, pieces)) != NULL) ?
+					retour :
+					aux1_solve_current(grid, v_pos, h_pos, pieces));
 		}
 		else
 		{
@@ -74,14 +85,14 @@ char	**solve_fillit(char ***pieces, size_t nb_of_pieces)
 	char	**retour;
 
 	min_dim = calculate_min_dim(nb_of_pieces);
-	dim = min_dim * 2;
+	dim = calculate_max_dim(nb_of_pieces);
 	if (!(definitive_solution = (char **)malloc(sizeof(char *))))
 		exit (-1);
 	*definitive_solution = NULL;
 	current_grid = initialise_grid(dim);
 
-	show_one_piece(current_grid);
-	write(1, "\n", 1);
+//	show_one_piece(current_grid);
+//	write(1, "\n", 1);
 
 	while (dim > min_dim && (retour = solve_current(current_grid, 0, 0, pieces)) != NULL)
 	{
@@ -94,8 +105,8 @@ char	**solve_fillit(char ***pieces, size_t nb_of_pieces)
 		show_one_piece(definitive_solution);
 		write(1, "\n", 1);
 
-		show_one_piece(current_grid);
-		write(1, "\n", 1);
+//		show_one_piece(current_grid);
+//		write(1, "\n", 1);
 
 	}
 	return (definitive_solution);

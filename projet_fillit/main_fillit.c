@@ -100,7 +100,7 @@ void	fill_pieces(int fd, size_t *piece_nb, char ***pieces)
 	ft_putstr("Fin de \"fill_pieces\"\n");
 }
 
-void	fillit(int fd)
+void	fillit(int fd, int colors)
 {
 	ft_putstr("Debut de \"fillit\"\n");
 
@@ -133,7 +133,7 @@ void	fillit(int fd)
 
 //	CREER UNE FONCTION A PART ENTIERE QUI AFFICHE LE RESULTAT
 //	EN ASSOCIANT UNE COULEUR DIFFERENTE A CHAQUE LETTRE
-	print_grid(retour);
+	colors ? print_grid(retour) : show_one_piece(retour);
 
 	write(1, "\n", 1);
 	ft_putstr("Fin de \"fillit\"\n");
@@ -142,8 +142,9 @@ void	fillit(int fd)
 int		main(int argc, char **argv)
 {
 	int		fd;
+	int		colors;
 
-	if (argc != 2)
+	if (!(argc == 3 && (colors = colors_or_not(*(argv + 2)))) && argc != 2)
 	{
 		ft_putstr("\"fillit\" doit prendre un fichier en argument\n");
 		exit (-1);
@@ -157,7 +158,7 @@ int		main(int argc, char **argv)
 		}
 		else
 		{
-			fillit(fd);
+			fillit(fd, colors);
 		}
 	}
 	return (0);

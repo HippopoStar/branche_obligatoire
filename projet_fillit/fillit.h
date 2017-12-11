@@ -24,6 +24,7 @@ void	ft_putstr(char *str);
 void	print_grid(char **grid);
 void	write_color(char c, char *color);
 char	*initialise_color(void);
+int		colors_or_not(char *argv_2);
 
 void	show_pieces(char ***pieces);
 void	show_one_piece(char **one_piece);
@@ -59,7 +60,7 @@ void	top_left_corner_pieces(char ***pieces);
 void	top_left_corner_one_piece(char **one_piece);
 void	decal(char **one_piece, size_t top, size_t left);
 
-void	fillit(int fd);
+void	fillit(int fd, int colors);
 void	fill_pieces(int fd, size_t *piece_nb, char ***pieces);
 int		fill_one_piece(int fd, char **one_piece, size_t piece_nb);
 void	fill_line(int fd, char *line, size_t piece_nb);

@@ -1,6 +1,35 @@
 
 #include "fillit.h"
 
+int		colors_or_not(char *argv_2)
+{
+	char	*colors_instruction;
+	size_t	i;
+
+	if (!(colors_instruction = (char *)malloc(10 * sizeof(char))))
+		exit (-1);
+	*(colors_instruction + 0) = 'C';
+	*(colors_instruction + 1) = 'O';
+	*(colors_instruction + 2) = 'L';
+	*(colors_instruction + 3) = 'O';
+	*(colors_instruction + 4) = 'R';
+	*(colors_instruction + 5) = 'S';
+	*(colors_instruction + 6) = '=';
+	*(colors_instruction + 7) = 'O';
+	*(colors_instruction + 8) = 'N';
+	*(colors_instruction + 9) = '\0';
+	i = 0;
+	while (i < 10)
+	{
+		if (*(colors_instruction + i) != *(argv_2 + i))
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 char	*initialise_color(void)
 {
 	char	*color;

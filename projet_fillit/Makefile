@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:48:14 by lcabanes          #+#    #+#              #
-#    Updated: 2017/11/27 23:45:38 by lcabanes         ###   ########.fr        #
+#    Updated: 2017/12/14 15:08:21 by Theo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS = main_fillit.c\
 	   manipulate_grid.c\
 	   show_pieces.c\
 	   color.c\
-	   ft_putstr.c
+	   ft_putstr.c\
+	   error_code.c
 
 OBJS = main_fillit.o\
 	   top_left.o\
@@ -37,7 +38,8 @@ OBJS = main_fillit.o\
 	   manipulate_grid.o\
 	   show_pieces.o\
 	   color.o\
-	   ft_putstr.o
+	   ft_putstr.o\
+	   error_code.o
 
 all: $(NAME)
 

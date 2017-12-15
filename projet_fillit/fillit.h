@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:30:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/27 23:55:32 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/12/14 15:14:36 by Theo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void	fillit(int fd, int colors);
 void	fill_pieces(int fd, size_t *piece_nb, char ***pieces);
 int		fill_one_piece(int fd, char **one_piece, size_t piece_nb);
 void	fill_line(int fd, char *line, size_t piece_nb);
+void	error_code(char *error);
 
 #endif

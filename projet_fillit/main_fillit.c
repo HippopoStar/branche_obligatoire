@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:28:58 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/27 23:39:08 by lcabanes         ###   ########.fr       */
+/*   Updated: 2017/12/15 02:15:17 by Theo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,14 @@ void	fill_line(int fd, char *line, size_t piece_nb)
 	while (column_nb < 4)
 	{
 		if (*(line + column_nb) != '.' && *(line + column_nb) != '#')
-		{
-			ft_putstr("Grille invalide\n");
-			exit (-1);
-		}
+			error_code("Grille invalide\n");
 		else if (*(line + column_nb) == '#')
-		{
 			*(line + column_nb) = 'A' + (int)piece_nb;
-		}
 		column_nb++;
 	}
 	read(fd, &c, 1);
 	if (c != '\n')
-	{
-		ft_putstr("Grille invalide\n");
-		exit (-1);
-	}
+		error_code("Grille invalide\n");
 	*(line + 4) = '\0';
 
 //	ft_putstr("Fin de \"fill_line\"\n");
@@ -66,10 +58,7 @@ int		fill_one_piece(int fd, char **one_piece, size_t piece_nb)
 		return (0);
 	}
 	else if (c != '\n')
-	{
-		ft_putstr("Fichier invalide\n");
-		exit (-1);
-	}
+		error_code("Fichier invalide\n");
 	*(one_piece + 4) = NULL;
 	return (1);
 
@@ -81,10 +70,7 @@ void	fill_pieces(int fd, size_t *piece_nb, char ***pieces)
 	ft_putstr("Debut de \"fill_pieces\"\n");
 
 	if (*piece_nb == 26)
-	{
-		ft_putstr("Grille invalide\n");
-		exit (-1);
-	}
+		error_code("Grille invalide\n");
 	if (!(*(pieces + *piece_nb) = (char **)malloc((4 + 1) * sizeof(char *))))
 		exit (-1);
 	if (fill_one_piece(fd, *(pieces + *piece_nb), *piece_nb) != 0)
@@ -112,17 +98,12 @@ void	fillit(int fd, int colors)
 	if (!(pieces = (char ***)malloc((26 + 1) * sizeof(char **))))
 		exit (-1);
 	fill_pieces(fd, &nb_of_pieces, pieces);
-
 	show_pieces(pieces);
-
 	top_left_corner_pieces(pieces);
 	show_pieces(pieces);
 
 	if (!(conform_pieces(pieces)))
-	{
-		ft_putstr("Pieces non conformes\n");
-		exit (-1);
-	}
+		error_code("Pieces non conformes\n");
 	write(1, "\n", 1);
 
 	epur_pieces(pieces);
@@ -145,17 +126,11 @@ int		main(int argc, char **argv)
 	int		colors;
 
 	if (!(argc == 3 && (colors = colors_or_not(*(argv + 2)))) && argc != 2)
-	{
-		ft_putstr("\"fillit\" doit prendre un fichier en argument\n");
-		exit (-1);
-	}
+		error_code("\"fillit\" doit prendre un fichier en argument\n");
 	else
 	{
 		if ((fd = open(*(argv + 1), O_RDONLY)) == -1)
-		{
-			ft_putstr("Le fichier passe en argument doit etre valide\n");
-			exit (-1);
-		}
+			error_code("Le fichier passe en argument doit etre valide\n");
 		else
 		{
 			fillit(fd, colors);

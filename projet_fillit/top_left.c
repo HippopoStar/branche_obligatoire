@@ -25,7 +25,6 @@ void	decal(char **one_piece, size_t top, size_t left)
 		}
 		i++;
 	}
-
 //	ft_putstr("Fin de \"decal\"\n");
 }
 
@@ -49,13 +48,9 @@ void	top_left_corner_one_piece(char **one_piece)
 			if ('A' <= *(*(one_piece + i) + j) && *(*(one_piece + i) + j) <= 'Z')
 			{
 				if (i < top)
-				{
 					top = i;
-				}
 				if (j < left)
-				{
 					left = j;
-				}
 			}
 			j++;
 		}

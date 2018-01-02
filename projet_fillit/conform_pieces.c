@@ -1,52 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conform_pieces.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlevaufr <tlevaufr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/02 14:47:45 by tlevaufr          #+#    #+#             */
+/*   Updated: 2018/01/02 16:46:28 by tlevaufr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
 int		match_that_piece(int fd, char **one_piece, char *read_buf)
 {
-//	ft_putstr("Appel de \"match_that_piece\"\n");
-
-	int		total_readed;
+	int		total_read;
 	char	c;
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 
-	total_readed = 0;
-	i = 0;
-	while (i < 4)
+	total_read = 0;
+	i = -1;
+	while (++i < 4)
 	{
-		j = 0;
-		while (j < 4)
+		j = -1;
+		while (++j < 4)
 		{
 			if (read(fd, &c, 1) != 1)
-				return (0); //a developper
-			total_readed++;
+				return (0);
+			total_read++;
 			if (c == '.' && c != *(*(one_piece + i) + j))
 			{
-				if (read(fd, read_buf, (20 - total_readed)) != (20 - total_readed))
-					return (0); //a developper
+				if (read(fd, read_buf, (20 - total_read)) != (20 - total_read))
+					return (0);
 				return (0);
 			}
-			j++;
 		}
 		if (read(fd, read_buf, 1) != 1)
-			return (0); //a developper
-		total_readed++;
-		i++;
+			return (0);
+		total_read++;
 	}
-
-	ft_putstr("MATCH !\n");
-
 	return (1);
 }
 
 int		match_a_piece(int fd, char **one_piece, int read_value, char *read_buf)
 {
-//	ft_putstr("Appel de \"match_a_piece\"\n");
-
 	if (read_value != 1)
 	{
 		close(fd);
-		return (0); //a developper
+		return (0);
 	}
 	else if (match_that_piece(fd, one_piece, read_buf))
 	{
@@ -62,19 +64,15 @@ int		match_a_piece(int fd, char **one_piece, int read_value, char *read_buf)
 
 int		conform_one_piece(char **one_piece, char *read_buf)
 {
-//	ft_putstr("Appel de \"conform_one_piece\"\n");
-
 	int		fd;
 
 	if ((fd = open("[PROTECT]conform_forms", O_RDONLY)) == -1)
-		return (0); //a developper
+		return (0);
 	return (match_a_piece(fd, one_piece, 1, read_buf));
 }
 
 int		conform_piece_i(char ***piece_i, char *read_buf)
 {
-//	ft_putstr("Appel de \"conform_piece_i\"\n");
-
 	if (*piece_i == NULL)
 	{
 		free(read_buf);
@@ -82,18 +80,17 @@ int		conform_piece_i(char ***piece_i, char *read_buf)
 	}
 	else
 	{
-		return (conform_one_piece(*piece_i, read_buf) && conform_piece_i((piece_i + 1), read_buf));
+		return (conform_one_piece(*piece_i, read_buf) &&\
+				conform_piece_i((piece_i + 1), read_buf));
 	}
 }
 
 int		conform_pieces(char ***pieces)
 {
-	ft_putstr("Appel de \"conform_pieces\"\n");
-
 	char	*read_buf;
 
 	if (!(read_buf = (char *)malloc((20 + 1) * sizeof(char))))
-		return (0); //a developper
+		return (0);
 	*(read_buf + 20) = '\0';
 	return (conform_piece_i((pieces + 0), read_buf));
 }

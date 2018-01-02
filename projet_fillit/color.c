@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlevaufr <tlevaufr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/02 14:59:46 by tlevaufr          #+#    #+#             */
+/*   Updated: 2018/01/02 14:59:59 by tlevaufr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fillit.h"
 
@@ -7,7 +18,7 @@ int		colors_or_not(char *argv_2)
 	size_t	i;
 
 	if (!(colors_instruction = (char *)malloc(10 * sizeof(char))))
-		exit (-1);
+		exit(-1);
 	*(colors_instruction + 0) = 'C';
 	*(colors_instruction + 1) = 'O';
 	*(colors_instruction + 2) = 'L';
@@ -35,7 +46,7 @@ char	*initialise_color(void)
 	char	*color;
 
 	if (!(color = (char *)malloc(6 * sizeof(char))))
-		exit (-1);
+		exit(-1);
 	*(color + 0) = '\033';
 	*(color + 1) = '[';
 	*(color + 2) = '0';

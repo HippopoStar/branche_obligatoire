@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:30:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/12/14 15:14:36 by Theo             ###   ########.fr       */
+/*   Updated: 2018/01/02 14:20:47 by tlevaufr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,23 @@ void	liberate_grid(char ***grid);
 char	**initialise_grid(size_t dim);
 size_t	next_dim(char **grid);
 
-char	**aux0_solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces);
-char	**aux1_solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces);
+char	**aux0_solve_current(char **grid, size_t v_pos, size_t h_pos,\
+							char ***pieces);
+char	**aux1_solve_current(char **grid, size_t v_pos, size_t h_pos,\
+							char ***pieces);
 
 char	**solve_fillit(char ***pieces, size_t nb_of_pieces);
-char	**solve_current(char **grid, size_t v_pos, size_t h_pos, char ***pieces);
+char	**solve_current(char **grid, size_t v_pos, size_t h_pos,\
+						char ***pieces);
 size_t	calculate_max_dim(size_t nb_of_pieces);
 size_t	calculate_min_dim(size_t nb_of_pieces);
 
-void	place_one_piece(char **grid, size_t v_pos, size_t h_pos, char **one_piece);
-int		is_available(char **grid, size_t v_pos, size_t h_pos, char **one_piece);
-void	unplace_one_piece(char **grid, size_t v_pos, size_t h_pos, char **one_piece);
+void	place_one_piece(char **grid, size_t v_pos, size_t h_pos,\
+						char **one_piece);
+int		is_available(char **grid, size_t v_pos, size_t h_pos,\
+					char **one_piece);
+void	unplace_one_piece(char **grid, size_t v_pos, size_t h_pos,\
+						char **one_piece);
 
 void	epur_pieces(char ***pieces);
 void	epur_one_piece(char **one_piece);

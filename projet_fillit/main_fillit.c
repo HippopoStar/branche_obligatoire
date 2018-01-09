@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:28:58 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/02 15:03:32 by tlevaufr         ###   ########.fr       */
+/*   Updated: 2018/01/07 15:26:20 by tlevaufr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	fill_line(int fd, char *line, size_t piece_nb)
 	while (column_nb < 4)
 	{
 		if (*(line + column_nb) != '.' && *(line + column_nb) != '#')
-			error_code("Grille invalide\n");
+			error_code("error\n");
 		else if (*(line + column_nb) == '#')
 			*(line + column_nb) = 'A' + (int)piece_nb;
 		column_nb++;
 	}
 	read(fd, &c, 1);
 	if (c != '\n')
-		error_code("Grille invalide\n");
+		error_code("error\n");
 	*(line + 4) = '\0';
 }
 
@@ -52,7 +52,7 @@ int		fill_one_piece(int fd, char **one_piece, size_t piece_nb)
 		return (0);
 	}
 	else if (c != '\n')
-		error_code("Fichier invalide\n");
+		error_code("error\n");
 	*(one_piece + 4) = NULL;
 	return (1);
 }
@@ -60,7 +60,7 @@ int		fill_one_piece(int fd, char **one_piece, size_t piece_nb)
 void	fill_pieces(int fd, size_t *piece_nb, char ***pieces)
 {
 	if (*piece_nb == 26)
-		error_code("Grille invalide\n");
+		error_code("error\n");
 	if (!(*(pieces + *piece_nb) = (char **)malloc((4 + 1) * sizeof(char *))))
 		exit(-1);
 	if (fill_one_piece(fd, *(pieces + *piece_nb), *piece_nb) != 0)
@@ -86,7 +86,7 @@ void	fillit(int fd, int colors)
 	top_left_corner_pieces(pieces);
 	show_pieces(pieces);
 	if (!(conform_pieces(pieces)))
-		error_code("Pieces non conformes\n");
+		error_code("error\n");
 	write(1, "\n", 1);
 	epur_pieces(pieces);
 	show_pieces(pieces);
@@ -106,7 +106,7 @@ int		main(int argc, char **argv)
 	else
 	{
 		if ((fd = open(*(argv + 1), O_RDONLY)) == -1)
-			error_code("Le fichier passe en argument doit etre valide\n");
+			error_code("error\n");
 		else
 			fillit(fd, colors);
 	}

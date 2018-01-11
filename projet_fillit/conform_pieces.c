@@ -15,12 +15,13 @@
 /*
 ** "match_that_piece" prend en argument :
 ** 1. le file_descriptor du fichier "[PROTECT]conform_forms"
-** 2. la piece dont on souhaite vérifier la conformite
+** 2. la grille contenant la piece dont on souhaite vérifier la conformite
 ** 3. un buffer de taille 21, present uniquement pour permettre de
-**    recuperer le retour de read
+**    recuperer la valeur de retour de read
 **
 ** dans le corps de la fonction sont declarees les variables :
 ** 1. total_read -> permet de stocker la somme des valeurs de retour de read
+**                  (ainsi l'etat de l'avancement dans la grille)
 ** 2. c          -> stock le caractere en cours d'evaluation dans la grille
 ** 3. i          -> index de parcours des lignes
 ** 4. j          -> index de parcours des colonnes
@@ -72,6 +73,21 @@ int		match_that_piece(int fd, char **one_piece, char *read_buf)
 	}
 	return (1);
 }
+
+/*
+** - "match_a_piece" a pour role de rappeler "match_that_piece" pour
+**   chaque grille de [PROTECT]conform_forms, jusqu'a ce qu'une correspondance
+**   soit trouvee ou qu'on ait parcouru l'ensemble du fichier repertoriant
+**   les grilles valides sans trouver de correspondance.
+** - En fait, son foctionnenment repose sur le fait qu'elle est chargee
+**   de lire la ligne vide presente entre chaque grille de [PROTECT]conform_forms.
+** - Ainsi, le cas d'une piece n'etant pas conforme se traduit par un appel
+**   de "match_a_piece" avec la valeur de "read_value" differente de 1,
+**   car cela signifie de l'echec de read a lire la ligne vide,
+**   soit la fin du fichier [PROTECT]conform_forms.
+** - Par ailleurs, elle clot [PROTECT]conform_forms entre chaque piece du fichier
+**   d'entree de "fillit" dont on doit verifier la conformite.
+*/
 
 int		match_a_piece(int fd, char **one_piece, int read_value, char *read_buf)
 {

@@ -6,13 +6,15 @@
 /*   By: tlevaufr <tlevaufr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 15:08:48 by tlevaufr          #+#    #+#             */
-/*   Updated: 2018/01/16 16:58:31 by tlevaufr         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:34:47 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
+** En travaillant avec des reels, on a :
+**
 ** max_dim = 4 * (racine_carree de nb_of_pieces)
 ** max_dim = 4 * (racine carree de (nb_of_characters / 4))
 ** max_dim = 4 * ((racine_carree de nb_of_caracters) / 2)
@@ -89,8 +91,6 @@ char	**solve_fillit(char ***pieces, size_t nb_of_pieces)
 		definitive_solution = copy_grid(retour, dim);
 		liberate_grid(&retour);
 		current_grid = initialise_grid(dim - 1);
-		show_one_piece(definitive_solution);
-		write(1, "\n", 1);
 	}
 	return (definitive_solution);
 }

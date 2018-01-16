@@ -6,7 +6,7 @@
 /*   By: tlevaufr <tlevaufr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 14:47:45 by tlevaufr          #+#    #+#             */
-/*   Updated: 2018/01/15 21:30:46 by tlevaufr         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:31:13 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,24 @@
 **   piece est constituee exclusivement de points et de lettres de l'alphabet,
 **   et la piece est placee en haut a gauche de la grille.
 ** - Ainsi, compte tenu du pre-taitement, il est suffisant de verifier la
-**   correspondance entre les points des 2 grilles pour verifier la correspondance
-**   entre les 2 pieces.
-** - Des lors qu'une divergence est constatee, l'algorithme va lire les caracteres
-**   suivants jusqu'au debut de la grille contenant la piece suivante, afin de
-**   preparer le prochain appel de la fonction, et renvoyer la valeur '0'.
+**   correspondance entre les points des 2 grilles pour verifier la
+**   correspondance entre les 2 pieces.
+** - Des lors qu'une divergence est constatee, l'algorithme va lire les
+**   caracteres suivants jusqu'au debut de la grille contenant la piece
+**   suivante, afin de preparer le prochain appel de la fonction, et renvoyer
+**   la valeur '0'.
 ** - En cas de correspondance, l'algorithme va renvoyer la valeur '1'.
+**
+** - Notez que l'on ne compare pas les '\n' a la fin de chaque ligne,
+**   car c'est rendu obsolete par "fill_line" (dans "main_fillit.c").
 */
 
-int		match_that_piece(int fd, char **one_piece, char *read_buf)
+int		match_that_piece(int fd, char **one_piece, char *read_buf, int total_r)
 {
-	int		total_read;
 	char	c;
 	int		i;
 	int		j;
 
-	total_read = 0;
 	i = -1;
 	while (++i < 4)
 	{
@@ -59,17 +61,17 @@ int		match_that_piece(int fd, char **one_piece, char *read_buf)
 		{
 			if (read(fd, &c, 1) != 1)
 				error_code("error\n");
-			total_read++;
+			total_r++;
 			if (c == '.' && c != *(*(one_piece + i) + j))
 			{
-				if (read(fd, read_buf, (20 - total_read)) != (20 - total_read))
+				if (read(fd, read_buf, (20 - total_r)) != (20 - total_r))
 					error_code("error\n");
 				return (0);
 			}
 		}
 		if (read(fd, read_buf, 1) != 1)
 			error_code("error\n");
-		total_read++;
+		total_r++;
 	}
 	return (1);
 }
@@ -79,14 +81,14 @@ int		match_that_piece(int fd, char **one_piece, char *read_buf)
 **   chaque grille de [PROTECT]conform_forms, jusqu'a ce qu'une correspondance
 **   soit trouvee ou qu'on ait parcouru l'ensemble du fichier repertoriant
 **   les grilles valides sans trouver de correspondance.
-** - En fait, son foctionnenment repose sur le fait qu'elle est chargee
-**   de lire la ligne vide presente entre chaque grille de [PROTECT]conform_forms.
+** - En fait, son foctionnenment repose sur le fait qu'elle est chargee de
+**   lire la ligne vide presente entre chaque grille de [PROTECT]conform_forms.
 ** - Ainsi, le cas d'une piece n'etant pas conforme se traduit par un appel
 **   de "match_a_piece" avec la valeur de "read_value" differente de 1,
 **   car cela signifie de l'echec de read a lire la ligne vide,
 **   soit la fin du fichier [PROTECT]conform_forms.
-** - Par ailleurs, elle clot [PROTECT]conform_forms entre chaque piece du fichier
-**   d'entree de "fillit" dont on doit verifier la conformite.
+** - Par ailleurs, elle clot [PROTECT]conform_forms entre chaque piece du
+**   fichier d'entree de "fillit" dont on doit verifier la conformite.
 */
 
 int		match_a_piece(int fd, char **one_piece, int read_value, char *read_buf)
@@ -96,7 +98,7 @@ int		match_a_piece(int fd, char **one_piece, int read_value, char *read_buf)
 		close(fd);
 		return (0);
 	}
-	else if (match_that_piece(fd, one_piece, read_buf))
+	else if (match_that_piece(fd, one_piece, read_buf, 0))
 	{
 		close(fd);
 		return (1);

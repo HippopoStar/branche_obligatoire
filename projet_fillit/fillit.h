@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:30:07 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/02 14:20:47 by tlevaufr         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:25:36 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		conform_pieces(char ***pieces);
 int		conform_piece_i(char ***piece_i, char *read_buf);
 int		conform_one_piece(char **one_piece, char *read_buf);
 int		match_a_piece(int fd, char **one_piece, int read_value, char *read_buf);
-int		match_that_piece(int fd, char **one_piece, char *read_buf);
+int		match_that_piece(int fd, char **one_piece, char *read_buf, int total_r);
 
 void	top_left_corner_pieces(char ***pieces);
 void	top_left_corner_one_piece(char **one_piece);

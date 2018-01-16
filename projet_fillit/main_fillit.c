@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:28:58 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/15 21:52:35 by tlevaufr         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:35:13 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	fillit(int fd, int colors)
 	if (!(conform_pieces(pieces)))
 		error_code("error\n");
 	epur_pieces(pieces);
-	show_pieces(pieces);
 	retour = (solve_fillit(pieces, nb_of_pieces));
 	colors ? print_grid(retour) : show_one_piece(retour);
 }

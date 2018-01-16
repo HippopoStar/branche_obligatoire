@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:28:58 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/16 17:35:13 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:14:29 by tlevaufr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int		main(int argc, char **argv)
 	int		colors;
 
 	if (!(argc == 3 && (colors = colors_or_not(*(argv + 2)))) && argc != 2)
-		error_code("\"fillit\" doit prendre un fichier en argument\n");
+		error_code("usage: ./fillit valid_file [COLORS=ON]\n");
 	else
 	{
 		if ((fd = open(*(argv + 1), O_RDONLY)) == -1)

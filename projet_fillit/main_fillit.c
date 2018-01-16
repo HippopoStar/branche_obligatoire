@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:28:58 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/07 15:26:20 by tlevaufr         ###   ########.fr       */
+/*   Updated: 2018/01/15 21:52:35 by tlevaufr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,13 @@ void	fillit(int fd, int colors)
 	if (!(pieces = (char ***)malloc((26 + 1) * sizeof(char **))))
 		exit(-1);
 	fill_pieces(fd, &nb_of_pieces, pieces);
-	show_pieces(pieces);
 	top_left_corner_pieces(pieces);
-	show_pieces(pieces);
 	if (!(conform_pieces(pieces)))
 		error_code("error\n");
-	write(1, "\n", 1);
 	epur_pieces(pieces);
 	show_pieces(pieces);
 	retour = (solve_fillit(pieces, nb_of_pieces));
 	colors ? print_grid(retour) : show_one_piece(retour);
-	write(1, "\n", 1);
-	ft_putstr("Fin de \"fillit\"\n");
 }
 
 int		main(int argc, char **argv)

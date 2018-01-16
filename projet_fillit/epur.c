@@ -6,7 +6,7 @@
 /*   By: tlevaufr <tlevaufr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 14:16:26 by tlevaufr          #+#    #+#             */
-/*   Updated: 2018/01/02 16:34:25 by tlevaufr         ###   ########.fr       */
+/*   Updated: 2018/01/15 21:47:08 by tlevaufr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	epur_one_piece(char **one_piece)
 	ssize_t	j;
 	int		temoin;
 
-	temoin = 0;
 	i = 3;
 	while (i >= 0)
 	{
+		temoin = 0;
 		j = 3;
 		while (j >= 0 && temoin == 0)
 		{

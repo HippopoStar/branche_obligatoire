@@ -6,7 +6,7 @@
 /*   By: tlevaufr <tlevaufr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 14:47:45 by tlevaufr          #+#    #+#             */
-/*   Updated: 2018/01/02 16:46:28 by tlevaufr         ###   ########.fr       */
+/*   Updated: 2018/01/15 21:30:46 by tlevaufr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@ int		match_that_piece(int fd, char **one_piece, char *read_buf)
 		while (++j < 4)
 		{
 			if (read(fd, &c, 1) != 1)
-				return (0);
+				error_code("error\n");
 			total_read++;
 			if (c == '.' && c != *(*(one_piece + i) + j))
 			{
 				if (read(fd, read_buf, (20 - total_read)) != (20 - total_read))
-					return (0);
+					error_code("error\n");
 				return (0);
 			}
 		}
 		if (read(fd, read_buf, 1) != 1)
-			return (0);
+			error_code("error\n");
 		total_read++;
 	}
 	return (1);
@@ -113,7 +113,7 @@ int		conform_one_piece(char **one_piece, char *read_buf)
 	int		fd;
 
 	if ((fd = open("[PROTECT]conform_forms", O_RDONLY)) == -1)
-		return (0);
+		error_code("error\n");
 	return (match_a_piece(fd, one_piece, 1, read_buf));
 }
 

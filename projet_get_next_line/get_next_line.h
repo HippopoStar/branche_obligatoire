@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:30:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2017/11/29 06:08:15 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/17 20:01:11 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 typedef struct		s_gnl
 {
 	int				fd;
-	char			*BUFFER;
-	ssize_t			backspace_place;
-	ssize_t			bytes_readed;
+	char			buff[BUFF_SIZE];
+	ssize_t			bs_p;
+	ssize_t			r_v;
 	struct s_gnl	*next;
 }					t_gnl;
 

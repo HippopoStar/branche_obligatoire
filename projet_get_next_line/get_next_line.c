@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/17 21:57:50 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/17 22:04:12 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_gnl	*creer_maillon(const int fd)
 	return (maillon);
 }
 
-int				aux_3_gnl(const int fd, char **line, t_gnl *maillon, int tab[2])
+int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[2])
 {
 	char			*tmp;
 	ssize_t			i;
@@ -37,8 +37,8 @@ int				aux_3_gnl(const int fd, char **line, t_gnl *maillon, int tab[2])
 
 	while (*((*line) + tab[0]) != '\0')
 		tab[0]++;
-	while (*(maillon->buff + maillon->bs_p + tab[1]) != '\n'
-				&& maillon->bs_p + tab[1] < maillon->r_v)
+	while (*(mai->buff + mai->bs_p + tab[1]) != '\n'
+				&& mai->bs_p + tab[1] < mai->r_v)
 		tab[1]++;
 	if (!(tmp = (char *)malloc((tab[0] + tab[1] + 1) * sizeof(char))))
 		return (-1);
@@ -47,19 +47,19 @@ int				aux_3_gnl(const int fd, char **line, t_gnl *maillon, int tab[2])
 		*(tmp + i) = *((*line) + i);
 	free(*line);
 	i = -1;
-	while (++i < tab[1] && ++(maillon->bs_p))
-		*(tmp + tab[0] + i) = *(maillon->buff + maillon->bs_p - 1);
+	while (++i < tab[1] && ++(mai->bs_p))
+		*(tmp + tab[0] + i) = *(mai->buff + mai->bs_p - 1);
 	*(tmp + tab[0] + tab[1]) = '\0';
 	*line = tmp;
-	if (maillon->bs_p == maillon->r_v)
-		return ((retour = aux_2_gnl(fd, line, maillon)) == 0 ? 1 : retour);
-	maillon->bs_p++;
+	if (mai->bs_p == mai->r_v)
+		return ((retour = aux_2_gnl(fd, line, mai)) == 0 ? 1 : retour);
+	mai->bs_p++;
 	return (1);
 }
 
 int				aux_2_gnl(const int fd, char **line, t_gnl *maillon)
 {
-	int				p_l__t_a[2];
+	ssize_t			p_l__t_a[2];
 
 	if (maillon->r_v == 0)
 	{

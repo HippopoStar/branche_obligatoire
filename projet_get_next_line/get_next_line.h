@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:30:14 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/17 20:01:11 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/17 21:47:23 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ typedef struct		s_gnl
 }					t_gnl;
 
 int					get_next_line(const int fd, char **line);
-//static int			aux_0_get_next_line(const int fd, char **line);
-//static int			aux_1_get_next_line(const int fd, char **line, t_gnl *maillon);
-//static int			aux_2_get_next_line(const int fd, char **line, t_gnl *maillon);
-//static int			aux_3_get_next_line(const int fd, char **line, t_gnl *maillon);
+int					aux_2_gnl(const int fd, char **line, t_gnl *maillon);
 
 #endif

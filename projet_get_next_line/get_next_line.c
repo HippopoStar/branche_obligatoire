@@ -6,11 +6,16 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/17 22:07:19 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/17 22:14:11 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+/*
+** bs_p : backspace_place
+** r_v  : read_value
+*/
 
 static t_gnl	*creer_maillon(const int fd)
 {
@@ -28,6 +33,11 @@ static t_gnl	*creer_maillon(const int fd)
 	maillon->next = NULL;
 	return (maillon);
 }
+
+/*
+** tab[0] : previous_length
+** tab[1] : to_add
+*/
 
 int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[2])
 {

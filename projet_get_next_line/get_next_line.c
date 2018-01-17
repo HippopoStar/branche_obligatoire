@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/17 22:04:12 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/17 22:07:19 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int				get_next_line(const int fd, char **line)
 			return (-1);
 		}
 	}
-	if ((retour = aux_1_gnl(fd, line, chaine)) == -1 || retour == 0)
+	if ((retour = aux_1_gnl(fd, line, chaine)) == -1)
 	{
 		free(*line);
 		*line = NULL;

@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/17 22:14:11 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/19 04:10:13 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[2])
 		tab[1]++;
 	if (!(tmp = (char *)malloc((tab[0] + tab[1] + 1) * sizeof(char))))
 		return (-1);
-	i = -1;
-	while (++i < tab[0])
-		*(tmp + i) = *((*line) + i);
+	i = 0;
+	while (i++ < tab[0])
+		*(tmp + (i - 1)) = *((*line) + (i - 1));
 	free(*line);
-	i = -1;
-	while (++i < tab[1] && ++(mai->bs_p))
-		*(tmp + tab[0] + i) = *(mai->buff + mai->bs_p - 1);
+	i = 0;
+	while (i < tab[1])
+		*(tmp + tab[0] + i++) = *(mai->buff + (mai->bs_p)++);
 	*(tmp + tab[0] + tab[1]) = '\0';
 	*line = tmp;
 	if (mai->bs_p == mai->r_v)
@@ -92,8 +92,21 @@ int				aux_2_gnl(const int fd, char **line, t_gnl *maillon)
 
 int				aux_1_gnl(const int fd, char **line, t_gnl *maillon)
 {
+	int				retour;
+	t_gnl			*tmp;
+
 	if (maillon->fd != fd)
 	{
+		if (maillon->next != NULL && (maillon->next)->fd == fd)
+		{
+			if ((retour = aux_2_gnl(fd, line, maillon->next)) == 0)
+			{
+				tmp = maillon->next;
+				maillon->next = (maillon->next)->next;
+				free(tmp);
+			}
+			return (retour);
+		}
 		if (maillon->next == NULL)
 		{
 			if (!(maillon->next = creer_maillon(fd)))

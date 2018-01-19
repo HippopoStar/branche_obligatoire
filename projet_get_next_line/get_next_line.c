@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/19 04:30:40 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/19 05:50:07 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,16 @@ int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[2])
 int				aux_2_gnl(const int fd, char **line, t_gnl *maillon)
 {
 	ssize_t			p_l__t_a[2];
+	t_gnl			*tmp;
 
 	if (maillon->r_v == 0)
 	{
+		if (maillon->next != NULL && (maillon->next)->fd == fd)
+		{
+			tmp = maillon->next;
+			maillon->next = (maillon->next)->next;
+			free(tmp);
+		}
 		return (0);
 	}
 	else if (maillon->bs_p == maillon->r_v)
@@ -82,12 +89,9 @@ int				aux_2_gnl(const int fd, char **line, t_gnl *maillon)
 		maillon->bs_p = 0;
 		return (aux_2_gnl(fd, line, maillon));
 	}
-	else
-	{
-		p_l__t_a[0] = 0;
-		p_l__t_a[1] = 0;
-		return (aux_3_gnl(fd, line, maillon, p_l__t_a));
-	}
+	p_l__t_a[0] = 0;
+	p_l__t_a[1] = 0;
+	return (aux_3_gnl(fd, line, maillon, p_l__t_a));
 }
 
 int				aux_1_gnl(const int fd, char **line, t_gnl *maillon)

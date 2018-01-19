@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/19 05:50:07 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/19 05:53:46 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int				aux_2_gnl(const int fd, char **line, t_gnl *maillon)
 
 	if (maillon->r_v == 0)
 	{
-		if (maillon->next != NULL && (maillon->next)->fd == fd)
+		if (maillon->next != NULL)
 		{
 			tmp = maillon->next;
 			maillon->next = (maillon->next)->next;

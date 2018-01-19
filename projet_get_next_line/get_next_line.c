@@ -37,30 +37,27 @@ static t_gnl	*creer_maillon(const int fd)
 /*
 ** tab[0] : previous_length
 ** tab[1] : to_add
+** tab[2] : i
 */
 
-int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[2])
+int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[3])
 {
 	char			*tmp;
-	ssize_t			i;
 	int				retour;
 
 	tab[0] = 0;
-	tab[1] = 0;
-	while (*((*line) + tab[0]) != '\0')
+	while (*((*line) + tab[0]) != '\0' || (tab[1] = 0) != 0)
 		tab[0]++;
-	while (*(mai->buff + mai->bs_p + tab[1]) != '\n'
-				&& mai->bs_p + tab[1] < mai->r_v)
+	while ((*(mai->buff + mai->bs_p + tab[1]) != '\n'
+				&& mai->bs_p + tab[1] < mai->r_v) || (tab[2] = 0) != 0)
 		tab[1]++;
 	if (!(tmp = (char *)malloc((tab[0] + tab[1] + 1) * sizeof(char))))
 		return (-1);
-	i = 0;
-	while (i++ < tab[0] || (i = 0) != 0)
-		*(tmp + (i - 1)) = *((*line) + (i - 1));
+	while (tab[2]++ < tab[0] || (tab[2] = 0) != 0)
+		*(tmp + (tab[2] - 1)) = *((*line) + (tab[2] - 1));
 	free(*line);
-//	i = 0;
-	while (i < tab[1])
-		*(tmp + tab[0] + i++) = *(mai->buff + (mai->bs_p)++);
+	while (tab[2] < tab[1])
+		*(tmp + tab[0] + tab[2]++) = *(mai->buff + (mai->bs_p)++);
 	*(tmp + tab[0] + tab[1]) = '\0';
 	*line = tmp;
 	if (mai->bs_p == mai->r_v)
@@ -71,7 +68,7 @@ int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[2])
 
 int				aux_2_gnl(const int fd, char **line, t_gnl *maillon)
 {
-	ssize_t			p_l__t_a[2];
+	ssize_t			p_l__t_a[3];
 
 	if (maillon->bs_p == maillon->r_v)
 	{

@@ -45,6 +45,8 @@ int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[2])
 	ssize_t			i;
 	int				retour;
 
+	tab[0] = 0;
+	tab[1] = 0;
 	while (*((*line) + tab[0]) != '\0')
 		tab[0]++;
 	while (*(mai->buff + mai->bs_p + tab[1]) != '\n'
@@ -53,10 +55,10 @@ int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[2])
 	if (!(tmp = (char *)malloc((tab[0] + tab[1] + 1) * sizeof(char))))
 		return (-1);
 	i = 0;
-	while (i++ < tab[0])
+	while (i++ < tab[0] || (i = 0) != 0)
 		*(tmp + (i - 1)) = *((*line) + (i - 1));
 	free(*line);
-	i = 0;
+//	i = 0;
 	while (i < tab[1])
 		*(tmp + tab[0] + i++) = *(mai->buff + (mai->bs_p)++);
 	*(tmp + tab[0] + tab[1]) = '\0';
@@ -70,28 +72,18 @@ int				aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[2])
 int				aux_2_gnl(const int fd, char **line, t_gnl *maillon)
 {
 	ssize_t			p_l__t_a[2];
-	t_gnl			*tmp;
 
-	if (maillon->r_v == 0)
-	{
-		if (maillon->next != NULL)
-		{
-			tmp = maillon->next;
-			maillon->next = (maillon->next)->next;
-			free(tmp);
-		}
-		return (0);
-	}
-	else if (maillon->bs_p == maillon->r_v)
+	if (maillon->bs_p == maillon->r_v)
 	{
 		if ((maillon->r_v = read(fd, maillon->buff, BUFF_SIZE)) == -1)
 			return (-1);
 		maillon->bs_p = 0;
-		return (aux_2_gnl(fd, line, maillon));
+		return (maillon->r_v == 0 ? 0 : aux_3_gnl(fd, line, maillon, p_l__t_a));
 	}
-	p_l__t_a[0] = 0;
-	p_l__t_a[1] = 0;
-	return (aux_3_gnl(fd, line, maillon, p_l__t_a));
+	else
+	{
+		return (aux_3_gnl(fd, line, maillon, p_l__t_a));
+	}
 }
 
 int				aux_1_gnl(const int fd, char **line, t_gnl *maillon)

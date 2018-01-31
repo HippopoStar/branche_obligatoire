@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 20:28:58 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/16 18:14:29 by tlevaufr         ###   ########.fr       */
+/*   Updated: 2018/01/31 15:31:23 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	fillit(int fd, int colors)
 		exit(-1);
 	fill_pieces(fd, &nb_of_pieces, pieces);
 	top_left_corner_pieces(pieces);
-	if (!(conform_pieces(pieces)))
+	if (!(tetriminos(pieces)))
 		error_code("error\n");
 	epur_pieces(pieces);
 	retour = (solve_fillit(pieces, nb_of_pieces));

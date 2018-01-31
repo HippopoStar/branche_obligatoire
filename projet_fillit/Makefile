@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:48:14 by lcabanes          #+#    #+#              #
-#    Updated: 2017/12/14 15:08:21 by Theo             ###   ########.fr        #
+#    Updated: 2018/01/31 15:32:02 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME = fillit
 
 SRCS = main_fillit.c\
 	   top_left.c\
+	   tetriminos.c\
 	   conform_pieces.c\
 	   epur.c\
 	   place_one_piece.c\
@@ -30,6 +31,7 @@ SRCS = main_fillit.c\
 
 OBJS = main_fillit.o\
 	   top_left.o\
+	   tetriminos.o\
 	   conform_pieces.o\
 	   epur.o\
 	   place_one_piece.o\

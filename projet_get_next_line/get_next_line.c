@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/19 05:53:46 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/01/31 12:50:00 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int				aux_1_gnl(const int fd, char **line, t_gnl *maillon)
 		{
 			if (!(maillon->next = creer_maillon(fd)))
 				return (-1);
+			return (aux_1_gnl(fd, line, maillon));
 		}
 		return (aux_1_gnl(fd, line, maillon->next));
 	}
@@ -114,28 +115,28 @@ int				aux_1_gnl(const int fd, char **line, t_gnl *maillon)
 int				get_next_line(const int fd, char **line)
 {
 	int				retour;
+	t_gnl			*tmp;
 	static t_gnl	*chaine;
 
-	if (line == NULL)
-	{
-		return (-1);
-	}
-	if (!((*line) = (char *)malloc(sizeof(char))))
+	if (line == NULL || !((*line) = (char *)malloc(sizeof(char))))
 		return (-1);
 	**line = '\0';
-	if (chaine == NULL)
+	if (chaine == NULL && !(chaine = creer_maillon(fd)))
 	{
-		if (!(chaine = creer_maillon(fd)))
-		{
-			free(*line);
-			*line = NULL;
-			return (-1);
-		}
+		free(*line);
+		*line = NULL;
+		return (-1);
 	}
 	if ((retour = aux_1_gnl(fd, line, chaine)) == -1)
 	{
 		free(*line);
 		*line = NULL;
+	}
+	if (chaine->r_v == 0)
+	{
+		tmp = chaine->next;
+		free(chaine);
+		chaine = tmp;
 	}
 	return (retour);
 }

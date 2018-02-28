@@ -6,7 +6,7 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:48:14 by lcabanes          #+#    #+#              #
-#    Updated: 2018/02/28 14:28:33 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/28 14:41:21 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,13 +44,14 @@ all: $(NAME)
 $(NAME):
 	@make all -C ./libft/
 	gcc -c $(CFLAGS) $(SRCS)
-	gcc -o $(NAME) $(CFLAGS) -L./libft/ -lft $(OBJS)
+	gcc -o $(NAME) $(CFLAGS) -L./libft/ $(OBJS) -lft
 
 clean:
-	@make fclean -C ./libft/
+	@make clean -C ./libft/
 	rm -f $(OBJS)
 
 fclean: clean
+	@make fclean -C ./libft/
 	rm -f $(NAME)
 
 re: fclean all

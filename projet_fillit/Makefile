@@ -42,16 +42,16 @@ OBJS = main_fillit.o\
 all: $(NAME)
 
 $(NAME):
-	@make all -C ./libft/
+	@make -C ./libft/ all
 	gcc -c $(CFLAGS) $(SRCS)
 	gcc -o $(NAME) $(CFLAGS) -L./libft/ $(OBJS) -lft
 
 clean:
-	@make clean -C ./libft/
+	@make -C ./libft/ clean
 	rm -f $(OBJS)
 
 fclean: clean
-	@make fclean -C ./libft/
+	@make -C ./libft/ fclean
 	rm -f $(NAME)
 
 re: fclean all

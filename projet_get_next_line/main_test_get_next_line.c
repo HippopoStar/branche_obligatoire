@@ -11,27 +11,8 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 #include <fcntl.h>
-
-size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (*(str + i) != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-void	ft_putstr(char *str)
-{
-	size_t	length;
-
-	length = ft_strlen(str);
-	write(1, str, length);
-}
 
 int		main(int argc, char **argv)
 {

@@ -29,6 +29,8 @@ typedef struct		s_gnl
 }					t_gnl;
 
 int					get_next_line(const int fd, char **line);
+int					aux_1_gnl(const int fd, char **line, t_gnl *maillon);
 int					aux_2_gnl(const int fd, char **line, t_gnl *maillon);
+int					aux_3_gnl(const int fd, char **line, t_gnl *mai, ssize_t tab[3]);
 
 #endif

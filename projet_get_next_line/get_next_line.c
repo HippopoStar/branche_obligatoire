@@ -112,6 +112,15 @@ int				aux_1_gnl(const int fd, char **line, t_gnl *maillon)
 		return (aux_2_gnl(fd, line, maillon));
 }
 
+/*
+** Remarque :
+** En raison de la condition employee pour determiner de la liberation du premier
+** maillon, dans le cas ou le nombre de caracteres du fichier correspondant au
+** premier file_descriptor est exactement un multiple de BUFF_SIZE, 'get_next_line'
+** va effectuer un 'malloc' et un 'free' de plus que necessaire
+*/
+
+
 int				get_next_line(const int fd, char **line)
 {
 	int				retour;

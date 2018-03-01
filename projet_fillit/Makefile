@@ -6,33 +6,30 @@
 #    By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/27 22:48:14 by lcabanes          #+#    #+#              #
-#    Updated: 2018/01/31 15:32:02 by lcabanes         ###   ########.fr        #
+#    Updated: 2018/02/28 14:41:21 by lcabanes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS	+=		-Wall -Wextra -Werror
-CFLAGS	+=		-I./
+CFLAGS	+=		-I./fillit_files/ -I./libft/
 
 NAME = fillit
 
-SRCS = main_fillit.c\
-	   top_left.c\
-	   tetriminos.c\
-	   conform_pieces.c\
-	   epur.c\
-	   place_one_piece.c\
-	   solve_fillit.c\
-	   aux_solve_fillit.c\
-	   manipulate_grid.c\
-	   show_pieces.c\
-	   color.c\
-	   ft_putstr.c\
-	   error_code.c
+SRCS = ./fillit_files/main_fillit.c\
+	   ./fillit_files/top_left.c\
+	   ./fillit_files/tetriminos.c\
+	   ./fillit_files/epur.c\
+	   ./fillit_files/place_one_piece.c\
+	   ./fillit_files/solve_fillit.c\
+	   ./fillit_files/aux_solve_fillit.c\
+	   ./fillit_files/manipulate_grid.c\
+	   ./fillit_files/show_pieces.c\
+	   ./fillit_files/color.c\
+	   ./fillit_files/ft_error_code.c
 
 OBJS = main_fillit.o\
 	   top_left.o\
 	   tetriminos.o\
-	   conform_pieces.o\
 	   epur.o\
 	   place_one_piece.o\
 	   solve_fillit.o\
@@ -40,19 +37,21 @@ OBJS = main_fillit.o\
 	   manipulate_grid.o\
 	   show_pieces.o\
 	   color.o\
-	   ft_putstr.o\
-	   error_code.o
+	   ft_error_code.o
 
 all: $(NAME)
 
 $(NAME):
+	@make all -C ./libft/
 	gcc -c $(CFLAGS) $(SRCS)
-	gcc -o $(NAME) $(OBJS)
+	gcc -o $(NAME) $(CFLAGS) -L./libft/ $(OBJS) -lft
 
 clean:
+	@make clean -C ./libft/
 	rm -f $(OBJS)
 
 fclean: clean
+	@make fclean -C ./libft/
 	rm -f $(NAME)
 
 re: fclean all

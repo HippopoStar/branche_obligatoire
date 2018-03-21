@@ -6,7 +6,7 @@
 /*   By: lcabanes <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 06:34:10 by lcabanes          #+#    #+#             */
-/*   Updated: 2018/01/31 12:50:00 by lcabanes         ###   ########.fr       */
+/*   Updated: 2018/03/22 00:23:53 by lcabanes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,12 @@ int				aux_1_gnl(const int fd, char **line, t_gnl *maillon)
 
 /*
 ** Remarque :
-** En raison de la condition employee pour determiner de la liberation du premier
-** maillon, dans le cas ou le nombre de caracteres du fichier correspondant au
-** premier file_descriptor est exactement un multiple de BUFF_SIZE, 'get_next_line'
-** va effectuer un 'malloc' et un 'free' de plus que necessaire
+** En raison de la condition employee pour determiner de la liberation du
+** premier maillon, dans le cas ou le nombre de caracteres du fichier
+** correspondant au premier file_descriptor est exactement un multiple
+** de BUFF_SIZE, 'get_next_line' va effectuer un 'malloc' et un 'free' de plus
+** que necessaire
 */
-
 
 int				get_next_line(const int fd, char **line)
 {

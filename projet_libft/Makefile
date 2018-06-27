@@ -74,7 +74,11 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libft/ft_lstdel.c\
 		./srcs_libft/ft_lstadd.c\
 		./srcs_libft/ft_lstiter.c\
-		./srcs_libft/ft_lstmap.c
+		./srcs_libft/ft_lstmap.c\
+		\
+		./srcs_common_functions/get_next_line.c\
+		./srcs_common_functions/ft_putnbr_base.c\
+		./srcs_common_functions/ft_split_whitespaces.c
 
 OBJS = ft_memset.o\
 		ft_bzero.o\
@@ -135,7 +139,11 @@ OBJS = ft_memset.o\
 		ft_lstdel.o\
 		ft_lstadd.o\
 		ft_lstiter.o\
-		ft_lstmap.o
+		ft_lstmap.o\
+		\
+		get_next_line.o\
+		ft_putnbr_base.o\
+		ft_split_whitespaces.o
 
 all: $(NAME)
 

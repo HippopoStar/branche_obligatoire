@@ -15,6 +15,11 @@ CFLAGS	+=		-I./includes/
 
 NAME = libft.a
 
+HEAD = ./includes/libft.h\
+		./includes/common_functions.h\
+		./includes/get_next_line.h\
+		./includes/get_next_line_backslash_zero.h
+
 SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libft/ft_bzero.c\
 		./srcs_libft/ft_memcpy.c\
@@ -77,8 +82,17 @@ SRCS = ./srcs_libft/ft_memset.c\
 		./srcs_libft/ft_lstmap.c\
 		\
 		./srcs_common_functions/get_next_line.c\
+		./srcs_common_functions/get_next_line_backslash_zero.c\
 		./srcs_common_functions/ft_putnbr_base.c\
-		./srcs_common_functions/ft_split_whitespaces.c
+		./srcs_common_functions/ft_split_whitespaces.c\
+		./srcs_common_functions/ft_sqrt.c\
+		./srcs_common_functions/ft_hypotenuse.c\
+		./srcs_common_functions/ft_melt_colors.c\
+		./srcs_common_functions/ft_break_color_down.c\
+		./srcs_common_functions/ft_itoa_base.c\
+		./srcs_common_functions/ft_lli_and_ulli_toa_base.c\
+		./srcs_common_functions/ft_widestring_to_string.c\
+		./srcs_common_functions/ft_strndup.c
 
 OBJS = ft_memset.o\
 		ft_bzero.o\
@@ -142,12 +156,21 @@ OBJS = ft_memset.o\
 		ft_lstmap.o\
 		\
 		get_next_line.o\
+		get_next_line_backslash_zero.o\
 		ft_putnbr_base.o\
-		ft_split_whitespaces.o
+		ft_split_whitespaces.o\
+		ft_sqrt.o\
+		ft_hypotenuse.o\
+		ft_melt_colors.o\
+		ft_break_color_down.o\
+		ft_itoa_base.o\
+		ft_lli_and_ulli_toa_base.o\
+		ft_widestring_to_string.o\
+		ft_strndup.o
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS) $(HEAD)
 	gcc -c $(CFLAGS) $(SRCS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)

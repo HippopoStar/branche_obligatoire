@@ -28,3 +28,6 @@ Commandes utiles :
 	`top -p $(ps aux | awk '/my_program_name/ { print $0 }' | awk '!/awk/ { print $2 }')`
 - commande pour afficher l'etat d'un fichier a l'issue de l'etape pre-processeur :  
 	`cpp <mon_fichier>.c`
+- creer une librairie a partir de fichiers objets et d'une autre librairie :  
+	`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`
+

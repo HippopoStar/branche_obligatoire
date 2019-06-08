@@ -1,6 +1,8 @@
 # branche\_obligatoire
 La branche commune en attendant de pouvoir choisir un cursus
 
+[Sujet Libft](https://cdn.intra.42.fr/pdf/pdf/1332/libft.fr.pdf)  
+
 Commandes utiles :
 - savoir les appels de fonction de la librairie standard :  
 	`nm -u <binaire>`

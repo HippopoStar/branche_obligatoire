@@ -29,5 +29,6 @@ Commandes utiles :
 - commande pour afficher l'etat d'un fichier a l'issue de l'etape pre-processeur :  
 	`cpp <mon_fichier>.c`
 - creer une librairie a partir de fichiers objets et d'une autre librairie :  
-	`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`
+	`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`  
+	`ranlib -f $(NAME)`
 

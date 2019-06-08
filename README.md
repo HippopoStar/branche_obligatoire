@@ -15,12 +15,12 @@ Commandes utiles :
 - installer un programme : `brew install <program_name>`
 - verifier l'absence de fuites memoire :
 	- valgrind  
-	`valgrind --leak-check=full <./program_name arg1 arg2 ...>` [< file_to_send_in_program_entry]`
+	`valgrind --leak-check=full <./program_name arg1 arg2 ...> [< file_to_send_in_program_entry]`
 	- leaks
 		- Ajouter un `while (1);` a la fin de la fonction 'main'
 		- Dans une 1ere fenetre : `./program_name arg1 arg2 ...`
 		- Dans une 2nd fenetre : `ps aux | grep 'program_name' && leaks 'program_name'`
 - - monitorer l'activite d'un programme :  
-	`top -p \`ps aux | awk '/my_program_name/ { print $0 }' | awk '!/awk/ { print $2 }'\``
+	`top -p $(ps aux | awk '/my_program_name/ { print $0 }' | awk '!/awk/ { print $2 }')`
 - commande pour afficher l'etat d'un fichier a l'issue de l'etape pre-processeur :  
 	`cpp <mon_fichier>.c`

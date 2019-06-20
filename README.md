@@ -25,7 +25,10 @@ Commandes utiles :
 		- Dans une 1ere fenetre : `./program_name arg1 arg2 ...`
 		- Dans une 2nd fenetre : `ps aux | grep 'program_name' && leaks 'program_name'`
 - monitorer l'activite d'un programme :  
+	- Avec `top` :  
 	`top -p $(ps aux | awk '/my_program_name/ { print $0 }' | awk '!/awk/ { print $2 }')`
+	- Avec `ps` :  
+	`ps aux | awk 'NR == 1 { print $0 } ; /lem-in/ && !/awk/ { print $0 }'`
 - commande pour afficher l'etat d'un fichier a l'issue de l'etape pre-processeur :  
 	`cpp <mon_fichier>.c`
 - creer une librairie a partir de fichiers objets et d'une autre librairie :  

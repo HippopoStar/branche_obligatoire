@@ -3,6 +3,9 @@ La branche commune en attendant de pouvoir choisir un cursus
 
 [Sujet Libft](https://cdn.intra.42.fr/pdf/pdf/1332/libft.fr.pdf)  
 
+Supprimer un depot GitHub :  
+'Repositories' -\> Se rendre dans le repertoire concerne -\> Onglet 'Settings'
+
 Commandes utiles :
 - savoir les appels de fonction de la librairie standard :  
 	`nm -u <binaire>`
@@ -20,18 +23,20 @@ Commandes utiles :
 - verifier l'absence de fuites memoire :
 	- valgrind  
 	`valgrind --leak-check=full <./program_name arg1 arg2 ...> [< file_to_send_in_program_entry]`
-	- leaks
+	- leaks  
 		- Ajouter un `while (1);` a la fin de la fonction 'main'
 		- Dans une 1ere fenetre : `./program_name arg1 arg2 ...`
 		- Dans une 2nd fenetre : `ps aux | grep 'program_name' && leaks 'program_name'`
 - monitorer l'activite d'un programme :  
-	- Avec `top` :  
+	- Avec 'top' :  
 	`top -p $(ps aux | awk '/my_program_name/ { print $0 }' | awk '!/awk/ { print $2 }')`
-	- Avec `ps` :  
+	- Avec 'ps' :  
 	`ps aux | awk 'NR == 1 { print $0 } ; /lem-in/ && !/awk/ { print $0 }'`
 - commande pour afficher l'etat d'un fichier a l'issue de l'etape pre-processeur :  
 	`cpp <mon_fichier>.c`
 - creer une librairie a partir de fichiers objets et d'une autre librairie :  
 	`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`  
 	`ranlib -f $(NAME)`
+- telecharger un fichier depuis un URL  
+	`curl -o <output_file> <URL>`
 

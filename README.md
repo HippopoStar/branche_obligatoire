@@ -34,6 +34,17 @@ Commandes utiles :
 	`ps aux | awk 'NR == 1 { print $0 } ; /lem-in/ && !/awk/ { print $0 }'`
 - commande pour afficher l'etat d'un fichier a l'issue de l'etape pre-processeur :  
 	`cpp <mon_fichier>.c`
+- Makefile(s)
+	- pour compiler avec les flags 'sanitize', ajouter :  
+	`CFLAGS +=	-01 -g -fsanitize=adress \`  
+	`		-fno-omit-frame-pointer \`  
+	`		-fsanitize-adress-use-after-scope`
+	- pour ajouter la regle 'analyser' :  
+	`analyser:`  
+	`	gcc -fsyntax-only $(CFLAGS) $(CPPFLAGS) $(SRC)`  
+	`	gcc --analyse $(CFLAGS) $(CPPFLAGS) $(SRC)`  
+	`[..]`  
+	`.PHONY: [...] analyser`
 - creer une librairie a partir de fichiers objets et d'une autre librairie :  
 	`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`  
 	`ranlib -f $(NAME)`

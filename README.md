@@ -51,27 +51,28 @@ Preferences/Profiles/Window/Settings\_for\_New\_Windows :  Columns [84] Rows [50
 __Reglages Vim__ :  
 
 ~/.vimrc :  
-	```
+```
 	" use 4 spaces for tabs  
 	set tabstop=4 softtabstop=4 shiftwidth=4  
-	```
+```
 
-	```
+```
 	" View  
 	" set cursorline  
 	set number  
 	set mouse=a  
-	```
+```
 
-	```
+```
 	" The color theme  
 	" colorsscheme maui  
-	```
+```
 
 Plugin header :  
 	cat /usr/share/vim/vim80/plugin/stdheader.vim  
 
 __Commandes utiles__ :  
+
 - savoir les appels de fonction de la librairie standard :  
 	`nm -u <binaire>`
 - verifier l'absence d'operateurs en fin de ligne  
@@ -103,20 +104,21 @@ __Commandes utiles__ :
 	`curl -o <output_file> <URL>`
 
 __Makefile(s)__ :  
+
 	- pour compiler avec les flags 'sanitize', ajouter :  
-	```
+```
 	CFLAGS +=	-01 -g -fsanitize=adress \
 			-fno-omit-frame-pointer \
 			-fsanitize-adress-use-after-scope
-	```
+```
 	- pour ajouter la regle 'analyser' :  
-	```
+```
 	analyser:
 		gcc -fsyntax-only $(CFLAGS) $(CPPFLAGS) $(SRC)
 		gcc --analyse $(CFLAGS) $(CPPFLAGS) $(SRC)
 	[..]
 	.PHONY: [...] analyser
-	```
+```
 	- creer une librairie a partir de fichiers objets et d'une autre librairie :  
 		`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`  
 		`ranlib -f $(NAME)`

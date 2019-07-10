@@ -6,6 +6,65 @@ La branche commune en attendant de pouvoir choisir un cursus
 Supprimer un depot GitHub :  
 'Repositories' -\> Se rendre dans le repertoire concerne -\> Onglet 'Settings'
 
+Polices d'ecriture pour le terminal :  
+	Andale Mono  
+	Arial Unicode MS  
+	Avenir  
+	Avenir Next  
+	Cochin  
+	Courier  
+	Courier New (+) - small  
+	Geneva (+) - tall  
+	Georgia (+) - tall  
+	Gill Sans  
+	Helvetica Neue  
+	Hoefler Text  
+	Lucida Grande (+) - tall  
+	Menio (+) - small  
+	Microsoft Sans Serif (+) - tall  
+	Monaco (Default)  
+	Optima (+) - tall  
+	Palatino  
+	PT Mono (+) - small  
+	Skia  
+	STIXGeneral  
+	Tahoma (+) - tall  
+	Times  
+	Trebuchet MS (+) - tall  
+	Verdana (+) - tall  
+	Apple Symbols (+) - small  
+
+Couleur arriere-plan :  
+	255 255 191=127+64  
+
+Couleur caracteres :  
+	95=63+32 95=63+32 127  
+
+Curseur :  
+	[✓] Underline [ ] Vertical bar [ ] Box
+
+Preferences/Profiles/Text/Text\_Rendering : Draw\_bold\_text\_in\_bold\_font [ ]  
+Preferences/Profiles/Window/Settings\_for\_New\_Windows :  Columns [83] Rows [50]  
+
+~/.vimrc :
+	```
+	" use 4 spaces for tabs
+	set tabstop=4 softtabstop=4 shiftwidth=4
+	```
+	```
+	" View
+	" set cursorline
+	set number
+	set mouse=a
+	```
+	```
+	" The color theme
+	" colorsscheme maui
+	```
+
+Plugin header :  
+	cat /usr/share/vim/vim80/plugin/stdheader.vim  
+
 Commandes utiles :
 - savoir les appels de fonction de la librairie standard :  
 	`nm -u <binaire>`

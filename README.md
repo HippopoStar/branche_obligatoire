@@ -52,23 +52,23 @@ __Reglages Vim__ :
 
 ~/.vimrc :  
 	```
-	" use 4 spaces for tabs
-	set tabstop=4 softtabstop=4 shiftwidth=4
+	" use 4 spaces for tabs  
+	set tabstop=4 softtabstop=4 shiftwidth=4  
 	```
 
 	```
-	" View
-	" set cursorline
-	set number
-	set mouse=a
+	" View  
+	" set cursorline  
+	set number  
+	set mouse=a  
 	```
 
 	```
-	" The color theme
-	" colorsscheme maui
+	" The color theme  
+	" colorsscheme maui  
 	```
 
-__Plugin header__ :  
+Plugin header :  
 	cat /usr/share/vim/vim80/plugin/stdheader.vim  
 
 __Commandes utiles__ :  
@@ -102,7 +102,7 @@ __Commandes utiles__ :
 - telecharger un fichier depuis un URL  
 	`curl -o <output_file> <URL>`
 
-__Makefile(s)__ :
+__Makefile(s)__ :  
 	- pour compiler avec les flags 'sanitize', ajouter :  
 	```
 	CFLAGS +=	-01 -g -fsanitize=adress \

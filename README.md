@@ -6,7 +6,7 @@ La branche commune en attendant de pouvoir choisir un cursus
 Supprimer un depot GitHub :  
 'Repositories' -\> Se rendre dans le repertoire concerne -\> Onglet 'Settings'
 
-_Reglages terminal_
+__Reglages terminal__
 
 Polices d'ecriture pour le terminal :  
 	Andale Mono  
@@ -48,7 +48,7 @@ Curseur :
 Preferences/Profiles/Text/Text\_Rendering : Draw\_bold\_text\_in\_bold\_font [ ]  
 Preferences/Profiles/Window/Settings\_for\_New\_Windows :  Columns [84] Rows [50]  
 
-_Reglages Vim_
+__Reglages Vim__
 
 ~/.vimrc :  
 	```
@@ -68,10 +68,10 @@ _Reglages Vim_
 	" colorsscheme maui
 	```
 
-_Plugin header_ :  
+__Plugin header__ :  
 	cat /usr/share/vim/vim80/plugin/stdheader.vim  
 
-_Commandes utiles_ :
+__Commandes utiles__ :
 - savoir les appels de fonction de la librairie standard :  
 	`nm -u <binaire>`
 - verifier l'absence d'operateurs en fin de ligne  
@@ -102,7 +102,7 @@ _Commandes utiles_ :
 - telecharger un fichier depuis un URL  
 	`curl -o <output_file> <URL>`
 
-_Makefile(s)_
+__Makefile(s)__
 	- pour compiler avec les flags 'sanitize', ajouter :  
 	```
 	CFLAGS +=	-01 -g -fsanitize=adress \

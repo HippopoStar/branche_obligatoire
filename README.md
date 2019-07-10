@@ -104,9 +104,9 @@ __Commandes utiles__ :
 	`curl -o <output_file> <URL>`
 
 
-__Makefile(s)__ :
+__Makefile(s)__ :  
 
-	- pour compiler avec les flags 'sanitize', ajouter :  
+pour compiler avec les flags 'sanitize', ajouter :  
 
 	```
 	CFLAGS +=	-01 -g -fsanitize=adress \
@@ -114,7 +114,7 @@ __Makefile(s)__ :
 			-fsanitize-adress-use-after-scope
 	```
 
-	- pour ajouter la regle 'analyser' :  
+pour ajouter la regle 'analyser' :  
 
 	```
 	analyser:
@@ -124,7 +124,7 @@ __Makefile(s)__ :
 	.PHONY: [...] analyser
 	```
 
-	- creer une librairie a partir de fichiers objets et d'une autre librairie :  
+creer une librairie a partir de fichiers objets et d'une autre librairie :  
 		`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`  
 		`ranlib -f $(NAME)`  
 

@@ -48,7 +48,7 @@ Curseur :
 Preferences/Profiles/Text/Text\_Rendering : Draw\_bold\_text\_in\_bold\_font [ ]  
 Preferences/Profiles/Window/Settings\_for\_New\_Windows :  Columns [84] Rows [50]  
 
-__Reglages Vim__
+__Reglages Vim__ :  
 
 ~/.vimrc :  
 	```
@@ -71,7 +71,7 @@ __Reglages Vim__
 __Plugin header__ :  
 	cat /usr/share/vim/vim80/plugin/stdheader.vim  
 
-__Commandes utiles__ :
+__Commandes utiles__ :  
 - savoir les appels de fonction de la librairie standard :  
 	`nm -u <binaire>`
 - verifier l'absence d'operateurs en fin de ligne  
@@ -102,7 +102,7 @@ __Commandes utiles__ :
 - telecharger un fichier depuis un URL  
 	`curl -o <output_file> <URL>`
 
-__Makefile(s)__
+__Makefile(s)__ :
 	- pour compiler avec les flags 'sanitize', ajouter :  
 	```
 	CFLAGS +=	-01 -g -fsanitize=adress \

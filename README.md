@@ -103,7 +103,7 @@ __Commandes utiles__ :
 - telecharger un fichier depuis un URL  
 	`curl -o <output_file> <URL>`
 
-__Makefile(s)__ :  
+__Makefile(s)__ :
 
 	- pour compiler avec les flags 'sanitize', ajouter :  
 

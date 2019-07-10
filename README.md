@@ -106,12 +106,15 @@ __Commandes utiles__ :
 __Makefile(s)__ :  
 
 	- pour compiler avec les flags 'sanitize', ajouter :  
+
 ```
 	CFLAGS +=	-01 -g -fsanitize=adress \
 			-fno-omit-frame-pointer \
 			-fsanitize-adress-use-after-scope
 ```
+
 	- pour ajouter la regle 'analyser' :  
+
 ```
 	analyser:
 		gcc -fsyntax-only $(CFLAGS) $(CPPFLAGS) $(SRC)
@@ -119,6 +122,7 @@ __Makefile(s)__ :
 	[..]
 	.PHONY: [...] analyser
 ```
+
 	- creer une librairie a partir de fichiers objets et d'une autre librairie :  
 		`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`  
 		`ranlib -f $(NAME)`

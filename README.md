@@ -6,6 +6,8 @@ La branche commune en attendant de pouvoir choisir un cursus
 Supprimer un depot GitHub :  
 'Repositories' -\> Se rendre dans le repertoire concerne -\> Onglet 'Settings'
 
+_Reglages terminal_
+
 Polices d'ecriture pour le terminal :  
 	Andale Mono  
 	Arial Unicode MS  
@@ -44,28 +46,32 @@ Curseur :
 	[✓] Underline [ ] Vertical bar [ ] Box
 
 Preferences/Profiles/Text/Text\_Rendering : Draw\_bold\_text\_in\_bold\_font [ ]  
-Preferences/Profiles/Window/Settings\_for\_New\_Windows :  Columns [83] Rows [50]  
+Preferences/Profiles/Window/Settings\_for\_New\_Windows :  Columns [84] Rows [50]  
 
-~/.vimrc :
+_Reglages Vim_
+
+~/.vimrc :  
 	```
 	" use 4 spaces for tabs
 	set tabstop=4 softtabstop=4 shiftwidth=4
 	```
+
 	```
 	" View
 	" set cursorline
 	set number
 	set mouse=a
 	```
+
 	```
 	" The color theme
 	" colorsscheme maui
 	```
 
-Plugin header :  
+_Plugin header_ :  
 	cat /usr/share/vim/vim80/plugin/stdheader.vim  
 
-Commandes utiles :
+_Commandes utiles_ :
 - savoir les appels de fonction de la librairie standard :  
 	`nm -u <binaire>`
 - verifier l'absence d'operateurs en fin de ligne  
@@ -93,7 +99,10 @@ Commandes utiles :
 	`ps aux | awk 'NR == 1 { print $0 } ; /lem-in/ && !/awk/ { print $0 }'`
 - commande pour afficher l'etat d'un fichier a l'issue de l'etape pre-processeur :  
 	`cpp <mon_fichier>.c`
-- Makefile(s)
+- telecharger un fichier depuis un URL  
+	`curl -o <output_file> <URL>`
+
+_Makefile(s)_
 	- pour compiler avec les flags 'sanitize', ajouter :  
 	```
 	CFLAGS +=	-01 -g -fsanitize=adress \
@@ -108,9 +117,7 @@ Commandes utiles :
 	[..]
 	.PHONY: [...] analyser
 	```
-- creer une librairie a partir de fichiers objets et d'une autre librairie :  
-	`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`  
-	`ranlib -f $(NAME)`
-- telecharger un fichier depuis un URL  
-	`curl -o <output_file> <URL>`
+	- creer une librairie a partir de fichiers objets et d'une autre librairie :  
+		`libtool -static -o $(NAME) $(OBJS) ./libft/libft.a`  
+		`ranlib -f $(NAME)`
 

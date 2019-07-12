@@ -3,12 +3,14 @@ La branche commune en attendant de pouvoir choisir un cursus
 
 [Sujet Libft](https://cdn.intra.42.fr/pdf/pdf/1332/libft.fr.pdf)  
 
+__GIT__  
+
 Supprimer un depot GitHub :  
 'Repositories' -\> Se rendre dans le repertoire concerne -\> Onglet 'Settings'  
 Faire revenir un fichier a l'etat d'un commit en arriere (commit le changement automatiquement) :  
 `git checkout master~1 <file>`  
 
-__Reglages terminal__
+__Reglages terminal__  
 
 Polices d'ecriture pour le terminal :  
 	Andale Mono  
@@ -52,22 +54,25 @@ Preferences/Profiles/Window/Settings\_for\_New\_Windows :  Columns [84] Rows [50
 
 __Reglages Vim__ :  
 
-~/.vimrc :  
+~/.vimrc :
 ```
-	" use 4 spaces for tabs  
-	set tabstop=4 softtabstop=4 shiftwidth=4  
-```
-
-```
-	" View  
-	" set cursorline  
-	set number  
-	set mouse=a  
+	" use 4 spaces for tabs
+	set tabstop=4
+	set softtabstop=4
+	set shiftwidth=4
 ```
 
 ```
-	" The color theme  
-	" colorsscheme maui  
+	" View
+	" set cursorline
+	set number
+	set mouse=a
+	set colorcolumn=80
+```
+
+```
+	" The color theme
+	" colorsscheme maui
 ```
 
 Plugin header :  

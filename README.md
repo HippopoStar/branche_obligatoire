@@ -4,7 +4,9 @@ La branche commune en attendant de pouvoir choisir un cursus
 [Sujet Libft](https://cdn.intra.42.fr/pdf/pdf/1332/libft.fr.pdf)  
 
 Supprimer un depot GitHub :  
-'Repositories' -\> Se rendre dans le repertoire concerne -\> Onglet 'Settings'
+'Repositories' -\> Se rendre dans le repertoire concerne -\> Onglet 'Settings'  
+Faire revenir un fichier a l'etat d'un commit en arriere (commit le changement automatiquement) :  
+`git checkout master~1 <file>`  
 
 __Reglages terminal__
 

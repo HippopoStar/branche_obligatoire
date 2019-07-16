@@ -80,6 +80,7 @@ Plugin header :
 
 __Commandes utiles__ :  
 
+- [Tutoriel : Des couleurs dans la console (Linux)](http://sdz.tdct.org/sdz/des-couleurs-dans-la-console-linux.html)  
 - savoir les appels de fonction de la librairie standard :  
 	`nm -u <binaire>`
 - verifier l'absence d'operateurs en fin de ligne  

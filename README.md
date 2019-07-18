@@ -125,11 +125,11 @@ pour compiler avec les flags 'sanitize', ajouter :
 pour ajouter la regle 'analyser' :  
 
 ```
-	analyser:
+	analyzer:
 		gcc -fsyntax-only $(CFLAGS) $(CPPFLAGS) $(SRC)
-		gcc --analyse $(CFLAGS) $(CPPFLAGS) $(SRC)
+		gcc --analyze $(CFLAGS) $(CPPFLAGS) $(SRC)
 	[...]
-	.PHONY: [...] analyser
+	.PHONY: [...] analyzer
 ```
 
 creer une librairie a partir de fichiers objets et d'une autre librairie :  

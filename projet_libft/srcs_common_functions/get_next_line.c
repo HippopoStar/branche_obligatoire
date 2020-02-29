@@ -203,3 +203,42 @@ int				get_next_line(const int fd, char **line)
 	}
 	return (retour);
 }
+
+/*
+** EBAUCHE D'AMELIORATION :
+*/
+/*
+** int				get_next_line(const int fd, char **line)
+** {
+** 	int				ret_val;
+** 	t_gnl			**tmp;
+** 	t_gnl			*to_del;
+** 	static t_gnl	*chaine = NULL;
+** 
+** 	tmp = &chaine;
+** 	while (!((*tmp) == NULL || (*tmp)->fd == fd))
+** 	{
+** 		(*tmp) = &((*tmp)->next);
+** 	}
+** 	if (line == NULL || ((*tmp) == NULL && !((*tmp) = creer_maillon(fd))))
+** 	{
+** 		return (-1);
+** 	}
+** 	(*line) = NULL;
+** 	if ((ret_val = aux_1_gnl(fd, line, (*tmp))) == -1)
+** 	{
+** 		if (!((*line) == NULL))
+** 		{
+** 			free(*line);
+** 			(*line) = NULL;
+** 		}
+** 	}
+** 	if ((*tmp)->r_v == 0)
+** 	{
+** 		to_del = (*tmp);
+** 		(*tmp) = &((*tmp)->next);
+** 		free(to_del);
+** 	}
+** 	return (ret_val);
+** }
+*/

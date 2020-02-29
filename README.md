@@ -2,6 +2,8 @@
 La branche commune en attendant de pouvoir choisir un cursus
 
 [Sujet Libft](https://cdn.intra.42.fr/pdf/pdf/1332/libft.fr.pdf)  
+('ft\_split' a mettre a jour avec 1 seul appel a 'malloc')  
+('get\_next\_line' a ameliorer)  
 
 __GIT__  
 

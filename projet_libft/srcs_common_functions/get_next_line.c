@@ -254,37 +254,26 @@ static int		aux_1_gnl(char **line, t_gnl *maillon)
 	size_t			i;
 	char			*to_del;
 
-	if (maillon->bs_p == maillon->r_v)
+	if (!(maillon->bs_p < maillon->r_v))
 	{
 		maillon->bs_p = 0;
 		if ((maillon->r_v = read(maillon->fd, maillon->buff, BUFF_SIZE)) == -1
 				|| (maillon->r_v == 0 && (*line) == NULL))
-		{
 			return (maillon->r_v);
-		}
 	}
 	i = 0;
 	while (maillon->bs_p + i < maillon->r_v
 			&& !((c = *(maillon->buff + maillon->bs_p + i)) == '\n'
 				|| c == '\0'))
-	{
 		i++;
-	}
 	to_del = (*line);
-	(*line) = concat((*line), &(*(maillon->buff + maillon->bs_p + i)), i);
+	(*line) = concat((*line), &(*(maillon->buff + maillon->bs_p)), i);
 	maillon->bs_p = maillon->bs_p + i;
 	if (!(to_del == NULL))
-	{
 		free(to_del);
-	}
 	if ((*line) == NULL)
-	{
 		return (-1);
-	}
-	else
-	{
-		return ((maillon->bs_p < maillon->r_v) ? 1 : aux_1_gnl(line, maillon));
-	}
+	return (((maillon->bs_p)++ < maillon->r_v) ? 1 : aux_1_gnl(line, maillon));
 }
 
 int				get_next_line(const int fd, char **line)

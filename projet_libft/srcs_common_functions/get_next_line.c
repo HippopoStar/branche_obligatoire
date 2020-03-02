@@ -205,40 +205,114 @@ int				get_next_line(const int fd, char **line)
 }
 
 /*
+** Pour supprimer un maillon :
+** - lire le file descriptor jusqu'a la fin du fichier (sauf entrée standard)
+** - fermer le file descriptor et appeler 'get_next_line' de nouveau
+** - envoyer NULL a 'get_next_line' en lieu et place de 'char **line'
 ** EBAUCHE D'AMELIORATION :
 */
+
+static char			*concat(char *str1, char *str2, size_t len)
+{
+	char			*str;
+	size_t			i;
+	size_t			j;
+
+	i = 0;
+	if (!(str1 == NULL))
+		while (!(*(str1 + i) == '\0'))
+			i++;
+	if (!(str = (char *)malloc((i + len + 1) * sizeof(char))))
+		return (NULL);
+	i = 0;
+	while (!(*(str1 + i) == '\0'))
+	{
+		*(str + i) = *(str1 + i);
+		i++;
+	}
+	j = 0;
+	while (j < len)
+	{
+		*(str + i + j) = *(str2 + j);
+		j++;
+	}
+	*(str + i + len) = '\0';
+	return (str);
+}
+
 /*
-** int				get_next_line(const int fd, char **line)
-** {
-** 	int				ret_val;
-** 	t_gnl			**tmp;
-** 	t_gnl			*to_del;
-** 	static t_gnl	*chaine = NULL;
-** 
-** 	tmp = &chaine;
-** 	while (!((*tmp) == NULL || (*tmp)->fd == fd))
-** 	{
-** 		(*tmp) = &((*tmp)->next);
-** 	}
-** 	if (line == NULL || ((*tmp) == NULL && !((*tmp) = creer_maillon(fd))))
-** 	{
-** 		return (-1);
-** 	}
-** 	(*line) = NULL;
-** 	if ((ret_val = aux_1_gnl(fd, line, (*tmp))) == -1)
-** 	{
-** 		if (!((*line) == NULL))
-** 		{
-** 			free(*line);
-** 			(*line) = NULL;
-** 		}
-** 	}
-** 	if ((*tmp)->r_v == 0)
-** 	{
-** 		to_del = (*tmp);
-** 		(*tmp) = &((*tmp)->next);
-** 		free(to_del);
-** 	}
-** 	return (ret_val);
-** }
+** Remarque :
+** On ne peut pas se baser sur le fait que la taille du buffer n'ait pas
+** atteint BUFF_SIZE lors de l'appel precedent pour savoir qu'on a atteint
+** la fin du fichier - penser au cas de l'entree standard
+** Par consequent, on n'a pas d'autre choix que d'appeler 'read' de nouveau
 */
+
+static int		aux_1_gnl(char **line, t_gnl *maillon)
+{
+	char			c;
+	size_t			i;
+	char			*to_del;
+
+	if (maillon->bs_p == maillon->r_v)
+	{
+		maillon->bs_p = 0;
+		if ((maillon->r_v = read(maillon->fd, maillon->buff, BUFF_SIZE)) == -1
+				|| (maillon->r_v == 0 && (*line) == NULL))
+		{
+			return (maillon->r_v);
+		}
+	}
+	i = 0;
+	while (maillon->bs_p + i < maillon->r_v
+			&& !((c = *(maillon->buff + maillon->bs_p + i)) == '\n'
+				|| c == '\0'))
+	{
+		i++;
+	}
+	to_del = (*line);
+	(*line) = concat((*line), &(*(maillon->buff + maillon->bs_p + i)), i);
+	maillon->bs_p = maillon->bs_p + i;
+	if (!(to_del == NULL))
+	{
+		free(to_del);
+	}
+	if ((*line) == NULL)
+	{
+		return (-1);
+	}
+	else
+	{
+		return ((maillon->bs_p < maillon->r_v) ? 1 : aux_1_gnl(line, maillon));
+	}
+}
+
+int				get_next_line(const int fd, char **line)
+{
+	int				ret_val;
+	t_gnl			**tmp;
+	t_gnl			*to_del;
+	static t_gnl	*chaine = NULL;
+
+	tmp = &chaine;
+	while (!((*tmp) == NULL || (*tmp)->fd == fd))
+		(*tmp) = &((*tmp)->next);
+	if (!(line == NULL) && !((*line = NULL) == NULL))
+	{
+		if ((*tmp) == NULL && !((*tmp) = creer_maillon(fd)))
+			return (-1);
+	}
+	if (line == NULL || !(ret_val = aux_1_gnl(line, (*tmp))) > 0)
+	{
+		if (!(line == NULL || (*line) == NULL))
+		{
+			free(*line);
+			(*line) = NULL;
+		}
+		to_del = (*tmp);
+		(*tmp) = &((*tmp)->next);
+		free(to_del);
+	}
+	return (ret_val);
+}
+

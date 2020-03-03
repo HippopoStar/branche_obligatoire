@@ -287,11 +287,11 @@ int				get_next_line(const int fd, char **line)
 	while (!((*tmp) == NULL || (*tmp)->fd == fd))
 		(*tmp) = &((*tmp)->next);
 	if (!(line == NULL) && !((*line = NULL) == NULL))
-	{
 		if ((*tmp) == NULL && !((*tmp) = creer_maillon(fd)))
 			return (-1);
-	}
-	if (line == NULL || !(ret_val = aux_1_gnl(line, (*tmp))) > 0)
+	ret_val = 0;
+	if ((line == NULL && !((*tmp) == NULL))
+			 || !(ret_val = aux_1_gnl(line, (*tmp))) > 0)
 	{
 		if (!(line == NULL || (*line) == NULL))
 		{

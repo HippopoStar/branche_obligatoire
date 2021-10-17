@@ -79,6 +79,10 @@ __Reglages Vim__ :
 
 Plugin header :  
 	cat /usr/share/vim/vim80/plugin/stdheader.vim  
+	<https://www.vim.org/docs.php>  
+	<http://vimdoc.sourceforge.net/>  
+	<http://vimdoc.sourceforge.net/htmldoc/usr_toc.html>  
+	<http://vimdoc.sourceforge.net/htmldoc/usr_41.html#script>  
 
 __Commandes utiles__ :  
 

@@ -83,6 +83,10 @@ Plugin header :
 	<http://vimdoc.sourceforge.net/>  
 	<http://vimdoc.sourceforge.net/htmldoc/usr_toc.html>  
 	<http://vimdoc.sourceforge.net/htmldoc/usr_41.html#script>  
+```
+mkdir --parents ~/.vimrc/plugin
+cp 'stdtemplate.vim' ~/.vimrc/plugin
+```
 
 __Commandes utiles__ :  
 

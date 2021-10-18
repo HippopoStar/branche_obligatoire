@@ -1,7 +1,9 @@
-let s:types		= {
-			\'\.hpp$\|\.cpp$':
-			\['/**', ' * ', ' */']
-			\}
+let s:types			= {
+						\'\.hpp$\|\.cpp$':
+						\['/**', ' */', ' * ']
+					\}
+
+let s:nb_columns	= 80
 
 function! s:filetype()
 	let l:f = s:filename()
@@ -43,8 +45,44 @@ function! s:basename()
 	let s:basename		= strpart(l:filename, 0, l:basename_len)
 endfunction
 
+function! s:fill_line(str, character)
+	let l:n				= s:nb_columns - strlen(a:str)
+	let l:line			= a:str
+	while 0 < n
+		let l:line			= l:line . a:character
+		let l:n				= l:n - 1
+	endwhile
+	return l:line
+endfunction
+
+function! s:print_section_delimiter(section_title)
+	call append(line('$'), s:start)
+	call append(line('$'), s:fill_line(s:fill . a:section_title . ' ', '-'))
+	call append(line('$'), s:end)
+endfunction
+
 function! s:print_constructors_and_destructors()
-	call append(line('$'), s:basename)
+	call s:print_section_delimiter('Constructor(s) & Destructor(s)')
+	call append(line('$'), s:basename . '::' . s:basename . '(void);')
+	call append(line('$'), s:basename . '::' . s:basename . '(' . s:basename . ' const &src);')
+	call append(line('$'), s:basename . '::~' . s:basename . '();')
+	call append(line('$'), '')
+endfunction
+
+function! s:print_method_example()
+	call append(line('$'), "void\t" . s:basename . '::' . 'my_function(int n);')
+endfunction
+
+function! s:print_public_methods()
+	call s:print_section_delimiter('Public method(s)')
+	call s:print_method_example()
+	call append(line('$'), '')
+endfunction
+
+function! s:print_private_methods()
+	call s:print_section_delimiter('Private method(s)')
+	call s:print_method_example()
+	call append(line('$'), '')
 endfunction
 
 function! s:stdtemplate()
@@ -52,6 +90,8 @@ function! s:stdtemplate()
 	call s:suffix()
 	call s:basename()
 	call s:print_constructors_and_destructors()
+	call s:print_public_methods()
+	call s:print_private_methods()
 endfunction
 
 " Bind command and shortcut
